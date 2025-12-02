@@ -9,4 +9,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  get "/contents_search", to: "pages#contents_search"
+  get "/recommendation", to: "pages#recommendation" 
 end
