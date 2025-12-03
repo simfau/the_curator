@@ -1,11 +1,14 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!
 
   def home
 
   end
   def contents_search
-
+    if params[:query].present?
+      @contents = Content.search_by_title_and_synopsis
+      (params[:query])
+    else
+      @contents = Content.all
   end
   def recommendation
 
