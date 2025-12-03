@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_12_03_173404) do
+ActiveRecord::Schema[7.1].define(version: 2025_12_03_210100) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,7 +26,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_12_03_173404) do
   create_table "contents", force: :cascade do |t|
     t.integer "format"
     t.string "title"
-    t.date "date_of_release"
+    t.string "date_of_release"
     t.string "creator"
     t.text "description"
     t.integer "duration"
