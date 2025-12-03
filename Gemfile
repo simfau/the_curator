@@ -73,3 +73,10 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# our gems vv
+
+gem "themoviedb"
+gem 'rspotify'
+gem 'faker'
+gem "ruby_llm", "~> 1.2.0"
