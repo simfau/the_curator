@@ -4,7 +4,7 @@ class Content < ApplicationRecord
   has_many :provider_records, dependent: :destroy
 
   enum format: [:song, :movie]
-  
+
   include PgSearch::Model
   pg_search_scope :search_by_title_description_creator,
     against: [ :title, :description, :creator],
@@ -78,4 +78,19 @@ class Content < ApplicationRecord
       raise "Unsupported type: #{type}❌"
     end
   end
+
+  private
+
+  def describe(content)
+    #call the ruby llm here to generate description
+  end
+
+  def process(content)
+    if content.is_processed.nil?
+      # call the ruby llm here to generate tags
+      # create ContentTag records (or call ContentTag method to do so)
+      # content.update!(is_processed: Time.now)
+    end
+  end
+
 end
