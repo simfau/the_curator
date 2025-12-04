@@ -7,14 +7,15 @@
     </p>
   <h4>What would you like to discover today?</h4>
     <div class="d-flex justify-content-center">
+      <%# <%= link_to "Song", contents_search_path, class: "btn btn-primary btn-lg me-2" %>
+      <%# <%= link_to "Movie", contents_search_path, class: "btn btn-primary btn-lg ms-2" %>
+      <%= form_with url: contents_search_path, method: :get, local: true do |form| %>
+      <%= form.button "Song", type: "submit", name: "action_type", value: "Song", class: "btn btn-primary" %>
+      <%= form.button "Movie", type: "submit", name: "action_type", value: "Movie", class: "btn btn-primary" %>
+      <% end %>
 
-      <%= link_to "Song", contents_search_path, class: "btn btn-primary btn-lg me-2" %>
-      <%# <button type="button" class="btn-primary me-2" data-bs-dismiss="alert" >
-      Song</button> %>
-      <%= link_to "Movie", contents_search_path, class: "btn btn-primary btn-lg ms-2" %>
-      <%# <button type="button" class="btn-primary ms-2" data-bs-dismiss="alert" >
-      Movie</button> %>
     </div>
+
 
 
 </div>
