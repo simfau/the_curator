@@ -12,7 +12,7 @@ class ProviderRecord < ApplicationRecord
     end
   end
 
-  def exists?(provider_name:, provider_content_id:)
+  def already_exists?(provider_name:, provider_content_id:)
       if ProviderRecord.exists?(provider_name: provider_name, provider_content_id: provider_content_id)
         puts "exists⏭️"
         return true

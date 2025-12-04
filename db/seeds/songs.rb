@@ -8,7 +8,7 @@ while song_counter - skipped_songs <= target - 1 do
   search_tracks.total.times do |j|
     track = RSpotify::Track.find(search_tracks[j]&.id)
     if track
-      if @provider_record.exists?(provider_name: "Spotify", provider_content_id: track.id)
+      if @provider_record.already_exists?(provider_name: "Spotify", provider_content_id: track.id)
         song_counter += 1
         skipped_songs += 1
         search_tracks.delete(j)

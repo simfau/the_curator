@@ -41,7 +41,7 @@ def loop_seed_movies(target, movies_counter, skipped_movies, random_movies)
     random_movies = more if more
     find_movie = random_movies[movies_counter % random_movies.size]
     if find_movie
-      if @provider_record.exists?(provider_name: "TMDB", provider_content_id: find_movie.id)
+      if @provider_record.already_exists?(provider_name: "TMDB", provider_content_id: find_movie.id)
         random_movies.delete_at( movies_counter % random_movies.size)
         movies_counter += 1
         skipped_movies += 1
