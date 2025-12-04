@@ -4,6 +4,13 @@ class Content < ApplicationRecord
   has_many :provider_records, dependent: :destroy
 
   enum format: [:song, :movie]
+  
+  include PgSearch::Model
+  pg_search_scope :search_by_title_description_creator,
+    against: [ :title, :description, :creator],
+    using: {
+      tsearch: { prefix: true }
+    }
 
   def adding(type, content, provider_record = ProviderRecord.new) #i think it's faster not to make one each time
     case type
@@ -71,5 +78,4 @@ class Content < ApplicationRecord
       raise "Unsupported type: #{type}❌"
     end
   end
-
 end
