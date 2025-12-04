@@ -1,14 +1,18 @@
+<div class="wrapper-for-stimulus" data-controller="shelf">
 <%= render "shared/search_form" %>
 
 <div class="container mt-4">
   <div class="row g-4">
-
     <% @contents.each do |content| %>
       <div class="col-4">
-        <div class="content-cube card">
+        <div class="content-cube card"
+          data-action="click->shelf#select"
+          data-shelf-title-param="<%= content.title %>"
+          data-shelf-image-param="<%= content.image_url %>">
           <h5 class="text-center"><%= content.title %></h5>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+</div>>
