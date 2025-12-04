@@ -1,4 +1,20 @@
 <div class="container text-center mt-5">
-<%= render "shared/search_form" %>
+<%# <%= render "shared/search_form" %>
+  <h1>The Curator</h1>
+    <p>*********
+
+
+    </p>
+  <h4>What would you like to discover today?</h4>
+    <div class="d-flex justify-content-center">
+
+      <%= link_to "Song", contents_search_path, class: "btn btn-primary btn-lg me-2" %>
+      <%# <button type="button" class="btn-primary me-2" data-bs-dismiss="alert" >
+      Song</button> %>
+      <%= link_to "Movie", contents_search_path, class: "btn btn-primary btn-lg ms-2" %>
+      <%# <button type="button" class="btn-primary ms-2" data-bs-dismiss="alert" >
+      Movie</button> %>
+    </div>
+
 
 </div>
