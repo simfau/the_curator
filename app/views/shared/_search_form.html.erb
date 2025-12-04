@@ -7,6 +7,8 @@
             class: "form-control",
             placeholder: "Type in a movie or a song you like"
         %>
+      <%= hidden_field_tag :action_type,
+            params[:action_type] %>
       <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
     <% end %>
   </div>
