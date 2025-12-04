@@ -9,4 +9,5 @@ class Content < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+    enum format: [:song, :movie]
 end
