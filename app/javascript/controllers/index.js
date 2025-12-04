@@ -8,4 +8,5 @@ import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
 import ShelfController from "./shelf_controller"
+
 application.register("shelf", ShelfController)

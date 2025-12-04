@@ -1,5 +1,4 @@
 <div class="wrapper-for-stimulus" data-controller="shelf">
-
   <%= render "shared/search_form" %>
 
   <div class="container mt-4">
@@ -10,13 +9,13 @@
             data-action="click->shelf#select"
             data-shelf-title-param="<%= content.title %>"
             data-shelf-image-param="<%= content.image_url %>">
-
             <h5 class="text-center"><%= content.title %></h5>
-
           </div>
         </div>
       <% end %>
     </div>
   </div>
-</div>
+
   <%= render "shared/shelf" %>
+
+</div>
