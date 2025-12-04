@@ -11,11 +11,11 @@ RSpotify::authenticate(ENV["SPOTIFY_KEY"], ENV["SPOTIFY_SECRET"])
 @content = Content.new
 @provider_record = ProviderRecord.new
 
-ProviderRecord.destroy_all
-ContentTag.destroy_all
-Content.destroy_all
+# ProviderRecord.destroy_all
+# ContentTag.destroy_all
+# Content.destroy_all
 
-target = 100 #set target number of entries to add for each format
+target = 10 #set target number of entries to add for each format
 
 seed_movies(target)
 

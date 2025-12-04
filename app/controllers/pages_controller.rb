@@ -11,6 +11,7 @@ class PagesController < ApplicationController
     end
   end
   def recommendation
+    @content = Content.first
 
   end
 end

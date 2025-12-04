@@ -1,0 +1,42 @@
+#body{
+  height: 100vh;
+  border:solid, 1px, green;
+}
+
+.recommendation_card{
+max-width: 800px ;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 16px;
+  background: white
+}
+.img_card{
+  border:solid, 1px, red;
+  position: relative;
+  width: 200px;
+  overflow: hidden;
+}
+.img_card img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+.score_circle{
+  border:solid,1px,black;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 80px;
+  height: 80px;
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+
+}
+.explanation {
+  border: solid,1px,orange;
+}
