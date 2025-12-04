@@ -1,0 +1,27 @@
+<div id="body">
+  <div class="d-flex justify-content-center align-items-center mt-5">
+      <div class="recommendation_card ">
+          <div class="img_card ">
+            <img src="<%= @content.image_url %>"
+                alt="<%= @content.title %>"
+                class="img_tag">
+            <div class="score_circle">
+              85%
+            </div>
+            <div class="img_title">
+              <%= @content.title %>
+            </div>
+        </div>
+        <div class="explanation">
+          <h3>This is explanation box</h3>
+        </div>
+        <div class="information">
+          <p><%= @content.description.presence || "No description available" %></p>
+          <p><strong>Creator:</strong> <%= @content.creator %></p>
+          <p><strong>Release date:</strong> <%= @content.date_of_release %></p>
+          <p><strong>Duration:</strong> <%= @content.duration %> seconds</p>
+          <p><strong>Popularity:</strong> <%= @content.popularity_score %></p>
+        </div>
+      </div>
+    </div>
+</div>
