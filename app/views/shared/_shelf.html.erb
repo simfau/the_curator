@@ -5,5 +5,6 @@
   <div class="content-cube card"><i class="fa-solid fa-plus"></i></div>
   <div class="content-cube card"><i class="fa-solid fa-plus"></i></div>
   <%# <button class="btn btn-primary rounded-circle">Curate</button> %>
-  <%= link_to "Curate", recommendation_path, class: "btn btn-primary btn-lg text-center align-self-center", height: "20px"; %>
+  <%= link_to "Curate", recommendation_path(action_type:params[:action_type], content_ids:[1, 2, 3]),
+       class: "btn btn-primary btn-lg text-center align-self-center", height: "20px"; %>
 </div>
