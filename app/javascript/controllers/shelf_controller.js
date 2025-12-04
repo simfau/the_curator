@@ -1,14 +1,18 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="shelf"
 export default class extends Controller {
   static targets = ["box"]
+
   select(event) {
     const clickedCube = event.currentTarget
     const movieTitle = clickedCube.dataset.shelfTitleParam
     const movieImage = clickedCube.dataset.shelfImageParam
-      console.log(`selected: ${movieTitle}`);
-      console.log(`image URL: ${movieImage}`);
-    this.boxTarget.innerText=movieTitle
+    const emptyBox = this.boxTargets.find(box => box.innerText === "")
+    if (emptyBox) {
+      emptyBox.innerText = movieTitle
+      // emptyBox.innerHTML = `<img src="${movieImage}" ...>`
+    } else {
+      console.log("Wow, wow, hold your spam big fella!")
+    }
   }
 }
