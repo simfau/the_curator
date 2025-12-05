@@ -3,25 +3,18 @@ class ContentTag < ApplicationRecord
 
   belongs_to :tag
 
-  enum category: {
-  mood: 0,
-  tone: 1,
-  theme: 2,
-  philosophy: 3,
-  energy_level: 4,
-  pacing: 5,
-  narrative_structure: 6,
-  emotional_arc: 7,
-  visual_style: 8,
-  color_palette: 9,
-  texture: 10,
-  cultural_context: 11,
-  genre: 12,
-  technique: 13,
-  complexity: 14,
-  originality: 15,
-  unknown: 16
+enum category: {
+  mood: 0,                # Emotional response
+  theme: 1,               # Central ideas
+  atmosphere: 2,          # Overall tone/vibe (replaces `tone`)
+  pacing: 3,              # Temporal flow
+  narrative_structure: 4, # Storytelling approach
+  aesthetic_style: 5,     # Aesthetic qualities (replaces `visual_style`, `texture`, `color_palette`)
+  philosophy: 6,          # Underlying ideas/worldviews
+  cultural_context: 7,
+  unknown: 8
 }
+
   def tagging(content = nil)
     @ai_model = "openai/gpt-oss-20b:groq"
     return if content == nil
@@ -63,7 +56,7 @@ class ContentTag < ApplicationRecord
       {
         messages: [
           { role: "user",
-            content: "Generate tags for the following content: #{content.title} by #{content.creator} from #{content.date_of_release}. There should be 50 tags, " }
+            content: "Generate tags for the following content: #{content.title} by #{content.creator} from #{content.date_of_release}. Generate only valid JSON for the tags-from-content tool. There should be 50 tags total. Ensure all tags are <= 20 characters. Do not include any extra text or reasoning. Distribute the tags as you wish in the categories (max 40 tags per category)" }
         ],
         model: @ai_model,
         stream: false,
