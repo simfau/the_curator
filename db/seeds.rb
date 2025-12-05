@@ -20,3 +20,8 @@ target = 10 #set target number of entries to add for each format
 seed_movies(target)
 
 seed_songs(target)
+
+# target.times do
+#   content = Content.all.sample
+#   ContentTag.new.tagging(content)
+# end
