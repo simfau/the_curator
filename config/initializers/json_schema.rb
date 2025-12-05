@@ -102,7 +102,7 @@ JSON_SCHEMA = {
             ]
           }
         },
-        required: ["content_id", "title", "creator", "type", "tags"]
+        required: ["tags"]
       },
       strict: true
     }

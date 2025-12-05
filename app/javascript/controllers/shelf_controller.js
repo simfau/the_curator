@@ -11,6 +11,7 @@ export default class extends Controller {
     if (emptyBox) {
       emptyBox.innerText = movieTitle
       emptyBox.innerHTML = `<img src="${movieImage}" class="img-fluid h-100 object-fit-contain">`
+
     } else {
       console.log("Wow, wow, hold your spam big fella!")
     }
