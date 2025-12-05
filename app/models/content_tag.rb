@@ -56,13 +56,13 @@ enum category: {
       {
         messages: [
           { role: "user",
-            content: "Generate tags for the following content: #{content.title} by #{content.creator} from #{content.date_of_release}. Generate only valid JSON for the tags-from-content tool. There should be 50 tags total. Ensure all tags are <= 20 characters. Do not include any extra text or reasoning. Distribute the tags as you wish in the categories (max 40 tags per category)" }
+            content: "Generate tags for the following content: #{content.title} by #{content.creator} from #{content.date_of_release} using the 'tags-from-content' tool. Ensure all tags are less than 20 characters. Do not include any extra text or reasoning in the output. Distribute exctly 50 tags as you wish in the categories (max 40 tags per category)" }
         ],
         model: @ai_model,
         stream: false,
         tools: [JSON_SCHEMA],
         temperature: 0.7,
-        max_tokens: 8096,
+        max_tokens: 16182,
         top_p: 0.71
       }.to_json,
       {

@@ -2,9 +2,10 @@ JSON_SCHEMA = {
   "type": "function",
   "function": {
     "name": "tags-from-content",
+    "description": "Generate comprehensive tags for any creative content (songs, movies, paintings, etc.)",
     "parameters": {
-      "type": "object",
-      "properties": {
+        "type": "object",
+        "properties": {
         "tags": {
           "type": "object",
           "properties": {
