@@ -23,26 +23,39 @@ class ContentTag < ApplicationRecord
   unknown: 16
 }
   def tagging(content = nil)
+    @ai_model = "openai/gpt-oss-20b:groq"
     return if content == nil
-    parsed = nil
-    i = 1
-    until parsed
-      reply = nil
-      until reply do
-        reply = JSON.parse(ask_ai(content).body)
-      end
-      begin
-        parsed = JSON.parse(reply['choices'][0]['message']['content'] || reply['choices'][0]['message']['tool_calls'][0]['function']['arguments'])
-      rescue => e
-        puts "ai failed: #{e.message}"
-        i += 1
-        puts "try nb:#{i}"
-        if i > 5
-          puts reply
+    if content.is_processed == nil
+      parsed = nil
+      i = 1
+      until parsed
+        reply = nil
+        until reply do
+          reply = JSON.parse(ask_ai(content).body)
+        end
+        begin
+          parsed = JSON.parse(reply['choices'][0]['message']['content'] || reply['choices'][0]['message']['tool_calls'][0]['function']['arguments'])
+        rescue => e
+          puts "ai failed: #{e.message}"
+          i += 1
+          puts "try ##{i}
+"
+          if i > 2
+            puts reply
+            @ai_model = "openai/gpt-oss-20b:nebius"
+            puts "changing inference provider for the next one ⏱️"
+          end
         end
       end
+      if save_tags(parsed, content)
+        return true
+      else
+        return false
+      end
+    else
+      print "🔒#{content.id}"
+      return false
     end
-    save_tags(parsed, content)
   end
 
   def ask_ai(content)
@@ -52,7 +65,7 @@ class ContentTag < ApplicationRecord
           { role: "user",
             content: "Generate tags for the following content: #{content.title} by #{content.creator} from #{content.date_of_release}. There should be 50 tags, " }
         ],
-        model: "openai/gpt-oss-20b:groq",
+        model: @ai_model,
         stream: false,
         tools: [JSON_SCHEMA],
         temperature: 0.7,
@@ -79,9 +92,9 @@ class ContentTag < ApplicationRecord
 
   def category=(value)
     super(if self.class.categories.key?(value.to_s)
-            value
+          value
           else
-            print "⁇🏳️⁇🏳️⁇🏳️⁇🏳️⁇🏳️⁇🏳️⁇🏳️⁇🏳️⁇🏳️⁇🏳️⁇🏳️⁇🏳️⁇🏳️"
+            print "🏳️"
             :unknown
           end)
   end
@@ -100,17 +113,21 @@ class ContentTag < ApplicationRecord
         new_tag = ContentTag.create!(tag_id: find_tag(tag), content_id: content.id, category: category[0].to_sym)
         # binding.irb
         new_tag.save
+        end
       end
     end
+    if count == 0
+      puts "0️⃣"
+      false
+    else
+      content.is_processed = Time.now
+      if content.save
+        print " 🔗"
+        puts "
+#{count} 🏷️"
+        return true
+      end
     end
-
-    content.is_processed = Time.now
-    if content.save
-      print " 🔗"
-    end
-    puts "
-#{count} total🏷️
-    "
   end
   # content = Content.first
   # reply = JSON.parse(ContentTag.new.ask_ai(content).body)
