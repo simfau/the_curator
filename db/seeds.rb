@@ -17,6 +17,6 @@ RSpotify::authenticate(ENV["SPOTIFY_KEY"], ENV["SPOTIFY_SECRET"])
 
 target = 10 #set target number of entries to add for each format
 
-seed_movies(target)
+# seed_movies(target)
 
 seed_songs(target)

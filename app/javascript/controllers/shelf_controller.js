@@ -10,7 +10,7 @@ export default class extends Controller {
     const emptyBox = this.boxTargets.find(box => box.innerText === "")
     if (emptyBox) {
       emptyBox.innerText = movieTitle
-      // emptyBox.innerHTML = `<img src="${movieImage}" ...>`
+      emptyBox.innerHTML = `<img src="${movieImage}" ...>`
     } else {
       console.log("Wow, wow, hold your spam big fella!")
     }
