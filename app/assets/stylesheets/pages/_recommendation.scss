@@ -3,12 +3,12 @@
   border:solid, 1px, green;
 }
 
-.recommendation_card{
+#recommendation_card{
 max-width: 800px ;
   width: 100%;
   border: 1px solid #ccc;
   padding: 16px;
-  background: white
+  background: $curator-charcoal;
 }
 .img_card{
   border:solid, 1px, red;
