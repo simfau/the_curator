@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   end
   def contents_search
     if params[:query].present?
-      @contents = Content.search_by_title_description_creator(params[:query]).limit(9)
+      @contents = Content.search_by_title_creator_description(params[:query]).limit(9)
     else
       @contents = Content.all.limit(9)
     end

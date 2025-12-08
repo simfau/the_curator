@@ -6,8 +6,12 @@ class Content < ApplicationRecord
   enum format: [:song, :movie]
 
   include PgSearch::Model
-  pg_search_scope :search_by_title_description_creator,
-    against: [ :title, :description, :creator],
+  pg_search_scope :search_by_title_creator_description,
+    against: {
+    title: 'A',   # high priority
+    creator: 'B',  # mid priority
+    description: 'C' #low priority
+  },
     using: {
       tsearch: { prefix: true }
     }
