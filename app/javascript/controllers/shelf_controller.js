@@ -23,4 +23,12 @@ export default class extends Controller {
     }
   }
 
+  deselected(event) {
+    const button = event.currentTarget
+    const box = button.closest('[data-shelf-target="box"]')
+
+    if (box) {
+      box.innerHTML = ""
+    }
+  }
 }
