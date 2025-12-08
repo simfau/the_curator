@@ -1,12 +1,14 @@
-<div class="wrapper-for-stimulus" data-controller="shelf">
-  <%= render "shared/search_form" %>
+<div class="search-container">
+  <div class="wrapper-for-stimulus" data-controller="shelf">
+    <%= render "shared/search_form" %>
 
-  <div class="container mt-4">
-    <div class="row g-4">
-      <%= render "shared/contents_search" %>
+    <div class="container mt-4">
+      <div class="row g-4">
+        <%= render "shared/contents_search" %>
+      </div>
     </div>
+
+    <%= render "shared/shelf" %>
+
   </div>
-
-  <%= render "shared/shelf" %>
-
 </div>

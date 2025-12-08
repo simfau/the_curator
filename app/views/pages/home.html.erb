@@ -10,8 +10,8 @@
       <%# <%= link_to "Song", contents_search_path, class: "btn btn-primary btn-lg me-2" %>
       <%# <%= link_to "Movie", contents_search_path, class: "btn btn-primary btn-lg ms-2" %>
       <%= form_with url: contents_search_path, method: :get, local: true do |form| %>
-      <%= form.button "Song", type: "submit", name: "action_type", value: "Song", class: "btn btn-primary" %>
-      <%= form.button "Movie", type: "submit", name: "action_type", value: "Movie", class: "btn btn-primary" %>
+      <%= form.button "Song", type: "submit", name: "action_type", value: "Song", class: "btn btn-light" %>
+      <%= form.button "Movie", type: "submit", name: "action_type", value: "Movie", class: "btn btn-light" %>
       <% end %>
 
     </div>

@@ -1,0 +1,32 @@
+.content-cube-shelf {
+  aspect-ratio: 1 / 1.5   ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $curator-background;
+  height: 150px;
+  flex: 1 1 0;
+
+  overflow: hidden;
+  position: relative;
+}
+
+.content-cube-shelf img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 4px;
+}
+
+#shelf {
+  background-color: $curator-background;
+  padding-bottom: 30px;
+  height: 220px;
+}
+
+.placeholder {
+  background-color: $curator-background;
+  border: 2px dotted $curator-white;
+  width: 75px;
+  height: 75px;
+}

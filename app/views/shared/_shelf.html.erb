@@ -1,14 +1,20 @@
-<div class="d-flex justify-content-evenly fixed-bottom bg-white" style="height: 100px;">
+<div class="container">
 
-    <div data-shelf-target="box" class="flex-fill content-cube card"><i class="fa-solid fa-plus"></i></div>
+  <div id="shelf" class="d-flex flex-column align-items-center fixed-bottom">
+    <div class="d-flex justify-content-evenly w-100 mb-2 p-2">
 
-    <div data-shelf-target="box" class="flex-fill content-cube card"><i class="fa-solid fa-plus"></i></div>
+        <div data-shelf-target="box" class="flex-fill justify-content-center content-cube-shelf"><div class="placeholder d-flex justify-content-center"></div></div>
 
-    <div data-shelf-target="box" class="flex-fill content-cube card"><i class="fa-solid fa-plus"></i></div>
+        <div data-shelf-target="box" class="flex-fill justify-content-center content-cube-shelf"><div class="placeholder d-flex justify-content-center"></div></div>
 
-    <div data-shelf-target="box" class="flex-fill content-cube card"><i class="fa-solid fa-plus"></i></div>
+        <div data-shelf-target="box" class="flex-fill justify-content-center content-cube-shelf"><div class="placeholder d-flex justify-content-center"></div></div>
 
-    <%# <button class="btn btn-primary rounded-circle">Curate</button> %>
+        <div data-shelf-target="box" class="flex-fill justify-content-center content-cube-shelf"><div class="placeholder d-flex justify-content-center"></div></div>
+
+    </div>
+
     <%= link_to "Curate", recommendation_path(action_type:params[:action_type], content_ids:[1, 2, 3]),
-        class: "btn btn-primary btn-lg text-center align-self-center" %>
+            class: "btn btn-light btn-lg text-center align-self-center" %>
+  </div>
+
 </div>
