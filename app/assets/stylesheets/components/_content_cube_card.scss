@@ -1,0 +1,8 @@
+.content-cube.card.picked {
+  opacity: 0.5;
+  filter: grayscale(100%);
+  pointer-events: none;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: scale(0.95);
+}
