@@ -7,10 +7,10 @@ export default class extends Controller {
     const clickedCube = event.currentTarget
     const movieTitle = clickedCube.dataset.shelfTitleParam
     const movieImage = clickedCube.dataset.shelfImageParam
-    const emptyBox = this.boxTargets.find(box => box.innerHTML === `<i class="fa-solid fa-plus"></i>`)
+    const emptyBox = this.boxTargets.find(box => box.innerHTML === `<div class="placeholder d-flex justify-content-center"></div>`)
     if (emptyBox) {
       emptyBox.innerText = movieTitle
-      emptyBox.innerHTML = `<img src="${movieImage}" class="img-fluid h-100 object-fit-contain">`
+      emptyBox.innerHTML = `<img src="${movieImage}">`
 
     } else {
       console.log("Wow, wow, hold your spam big fella!")
