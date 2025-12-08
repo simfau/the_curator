@@ -16,23 +16,22 @@ RSpotify::authenticate(ENV["SPOTIFY_KEY"], ENV["SPOTIFY_SECRET"])
 @provider_record = ProviderRecord.new
 
 
-target = 5000 #set target number of entries to add for each format
+target = 1000 #set target number of entries to add for each format
 
-seed_movies(target)
+# seed_movies(target)
 
-seed_songs(target)
-
+# seed_songs(target)
 
 skipped_tags = 0
 tags_counter = 0
 
-# while  tags_counter - skipped_tags <= target do
-#   content = Content.all.where(is_processed: nil).sample
-#   break if content == nil
-#   tags_counter += 1
-#   if !ContentTag.new.tagging(content)
-#     skipped_tags += 1
-#     print "🔒
-# "
-#   end
-# end
+while  tags_counter - skipped_tags <= target * 2 do
+  content = Content.all.where(is_processed: nil).sample
+  break if content == nil
+  tags_counter += 1
+  if !ContentTag.new.tagging(content)
+    skipped_tags += 1
+    print "🔒
+"
+  end
+end

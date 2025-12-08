@@ -3,7 +3,7 @@ def seed_songs(target)
   skipped_songs = 0
   puts "Seeding songs from Spotify..."
 while song_counter - skipped_songs <= target - 1 do
-  search_tracks = RSpotify::Track.search('pop', offset: rand(1000))
+  search_tracks = RSpotify::Track.search('rock', offset: rand(1000))
   puts "found #{search_tracks.total} tracks"
   search_tracks.total.times do |j|
     track = RSpotify::Track.find(search_tracks[j]&.id)

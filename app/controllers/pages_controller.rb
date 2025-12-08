@@ -11,7 +11,6 @@ class PagesController < ApplicationController
     end
   end
   def recommendation
-    @content = Content.first
-
+    @content = Content.contents_score(params[:content_ids].flatten).first
   end
 end

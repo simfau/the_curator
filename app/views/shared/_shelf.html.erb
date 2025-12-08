@@ -13,7 +13,7 @@
 
     </div>
 
-    <%= link_to "Curate", recommendation_path(action_type:params[:action_type], content_ids:[1, 2, 3]),
+    <%= link_to "Curate", recommendation_path(action_type:params[:action_type], content_ids:[Content.all.shuffle.first(4)]),
             class: "btn btn-light btn-lg text-center align-self-center" %>
   </div>
 
