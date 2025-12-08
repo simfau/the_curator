@@ -16,4 +16,13 @@ export default class extends Controller {
       console.log("Wow, wow, hold your spam big fella!")
     }
   }
+
+  deselected(event) {
+    const button = event.currentTarget
+    const box = button.closest('[data-shelf-target="box"]')
+
+    if (box) {
+      box.innerHTML = ""
+    }
+  }
 }
