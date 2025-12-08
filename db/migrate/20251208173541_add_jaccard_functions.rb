@@ -4,7 +4,6 @@ class AddJaccardFunctions < ActiveRecord::Migration[7.1]
       CREATE OR REPLACE FUNCTION jaccard_index(a bigint[], b bigint[])
       RETURNS double precision
       LANGUAGE sql
-      IMMUTABLE
       STRICT
       AS $$
           SELECT
@@ -26,7 +25,6 @@ class AddJaccardFunctions < ActiveRecord::Migration[7.1]
       CREATE OR REPLACE FUNCTION contents_score(a bigint[], b bigint)
       RETURNS double precision
       LANGUAGE sql
-      IMMUTABLE
       STRICT
       AS $$
         SELECT jaccard_index(

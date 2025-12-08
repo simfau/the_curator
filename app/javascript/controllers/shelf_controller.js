@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["box"]
+  static targets = ["box", "link"]
 
   select(event) {
     const clickedCube = event.currentTarget
@@ -14,6 +14,11 @@ export default class extends Controller {
       window.alert("Shelf is full!")
       return
     }
+    const url = new URL(this.linkTarget.href)
+    const params = url.searchParams
+    params.append("content_ids[]", sourceId)
+    this.linkTarget.href = url.toString()
+
     clickedCube.classList.add("picked")
     emptyBox.innerHTML = `
         <div class="shelf-item position-relative d-flex justify-content-center">
@@ -34,10 +39,13 @@ export default class extends Controller {
   remove(event) {
     event.stopPropagation()
     const button = event.currentTarget
+    const sourceId = button.dataset.sourceId
     const shelfItem = button.closest(".shelf-item")
     const boxTarget = button.closest("[data-shelf-target='box']")
 
     const originalMovieId = button.dataset.sourceId
+
+
 
     const originalMovieCard = document.getElementById(originalMovieId)
 
@@ -47,6 +55,11 @@ export default class extends Controller {
     if (shelfItem) {
       shelfItem.remove()
       if (boxTarget) {
+        const url = new URL(this.linkTarget.href)
+        const params = url.searchParams
+        params.delete("content_ids[]", sourceId)
+        this.linkTarget.href = url.toString()
+
         boxTarget.innerHTML = `
           <div class="d-flex align-items-center justify-content-center text-muted">
             <div class="placeholder d-flex justify-content-center"></div>

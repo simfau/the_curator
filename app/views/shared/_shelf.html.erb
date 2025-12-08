@@ -13,8 +13,9 @@
 
     </div>
 
-    <%= link_to "Curate", recommendation_path(action_type:params[:action_type], content_ids:[Content.all.shuffle.first(4)]),
-            class: "btn btn-light btn-lg text-center align-self-center" %>
+    <%= link_to "Curate", recommendation_path(action_type:params[:action_type]),
+            class: "btn btn-light btn-lg text-center align-self-center",
+            data: {shelf_target: "link" } %>
   </div>
 
 </div>

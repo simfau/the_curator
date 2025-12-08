@@ -1,7 +1,7 @@
-\restrict r5RB8PZNXtbForQVYdAKqV8RaGgawOmcrrSe3IQNjfdxGYFJa25WGNpJ8Sheebz
+\restrict Ad9EcLZN2Nm0fK7SGRJ83Q42q00UljW9cxVEMdqiehj3avaPTb9gvjRygjFx5mk
 
--- Dumped from database version 15.15 (Homebrew)
--- Dumped by pg_dump version 18.1
+-- Dumped from database version 15.14 (Homebrew)
+-- Dumped by pg_dump version 18.0
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -16,11 +16,22 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
+-- Name: contents_jaccard(bigint[], bigint); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.contents_jaccard(a bigint[], b bigint) RETURNS double precision
+    LANGUAGE sql IMMUTABLE STRICT
+    AS $$
+  SELECT jaccard_index(a, ARRAY(SELECT content_tags.tag_id FROM contents JOIN content_tags ON content_tags.content_id = contents.id where contents.id = b))
+$$;
+
+
+--
 -- Name: contents_score(bigint[], bigint); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION public.contents_score(a bigint[], b bigint) RETURNS double precision
-    LANGUAGE sql IMMUTABLE STRICT
+    LANGUAGE sql STRICT
     AS $$
         SELECT jaccard_index(
           a,
@@ -39,11 +50,11 @@ CREATE FUNCTION public.contents_score(a bigint[], b bigint) RETURNS double preci
 --
 
 CREATE FUNCTION public.jaccard_index(a bigint[], b bigint[]) RETURNS double precision
-    LANGUAGE sql IMMUTABLE STRICT
+    LANGUAGE sql STRICT
     AS $$
           SELECT
               CASE
-                  WHEN union_count = 0 THEN 0.0
+                  WHEN union_count = 0 THEN 1.00
                   ELSE intersection_count::double precision / union_count::double precision
               END
           FROM (
@@ -344,11 +355,12 @@ ALTER TABLE ONLY public.provider_records
 -- PostgreSQL database dump complete
 --
 
-\unrestrict r5RB8PZNXtbForQVYdAKqV8RaGgawOmcrrSe3IQNjfdxGYFJa25WGNpJ8Sheebz
+\unrestrict Ad9EcLZN2Nm0fK7SGRJ83Q42q00UljW9cxVEMdqiehj3avaPTb9gvjRygjFx5mk
 
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20251208225840'),
 ('20251208173541'),
 ('20251204184253'),
 ('20251203210100'),
