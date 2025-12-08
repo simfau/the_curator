@@ -1,4 +1,4 @@
-\restrict bAcnZT7jrO18TGyloXucdt3gds6K3oC839cp6ISFFMWSOrameC8KaAaH5Ti5F8f
+\restrict vKwBF9deKGP5GTA0MQC5L4WWD2h2CxNuefHV00PBifwikdEnBAFMciSjICS2YvG
 
 -- Dumped from database version 15.14 (Homebrew)
 -- Dumped by pg_dump version 18.0
@@ -14,17 +14,6 @@ SET check_function_bodies = false;
 SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
-
---
--- Name: contents_jaccard(bigint[], bigint); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION public.contents_jaccard(a bigint[], b bigint) RETURNS double precision
-    LANGUAGE sql IMMUTABLE STRICT
-    AS $$
-  SELECT jaccard_index(a, ARRAY(SELECT content_tags.tag_id FROM contents JOIN content_tags ON content_tags.content_id = contents.id where contents.id = b))
-$$;
-
 
 --
 -- Name: contents_score(bigint[], bigint); Type: FUNCTION; Schema: public; Owner: -
@@ -355,7 +344,7 @@ ALTER TABLE ONLY public.provider_records
 -- PostgreSQL database dump complete
 --
 
-\unrestrict bAcnZT7jrO18TGyloXucdt3gds6K3oC839cp6ISFFMWSOrameC8KaAaH5Ti5F8f
+\unrestrict vKwBF9deKGP5GTA0MQC5L4WWD2h2CxNuefHV00PBifwikdEnBAFMciSjICS2YvG
 
 SET search_path TO "$user", public;
 

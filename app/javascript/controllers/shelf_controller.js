@@ -1,8 +1,18 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["box"]
+  static targets = ["box", "actionButton"]
 
+    updateButtons() {
+      const isEmpty = !this.boxTargets.some(box =>
+      box.querySelector(".shelf-item")
+    )
+
+    this.actionButtonTargets.forEach(btn => {
+      btn.classList.toggle("disabled", isEmpty)
+      btn.disabled = isEmpty
+    })
+  }
   select(event) {
     const clickedCube = event.currentTarget
     const movieTitle = clickedCube.dataset.shelfTitleParam
@@ -14,6 +24,8 @@ export default class extends Controller {
     }
 
     const emptyBox = this.boxTargets.find(box => !box.querySelector(".shelf-item"))
+
+
 
     if (!emptyBox) {
       window.alert("Shelf is full!")
@@ -33,6 +45,8 @@ export default class extends Controller {
         </button>
       </div>
     `
+    this.updateButtons()
+
   }
 
   remove(event) {
@@ -41,6 +55,8 @@ export default class extends Controller {
     const shelfItem = button.closest(".shelf-item")
     if (shelfItem) {
       shelfItem.remove()
+      this.updateButtons()
+
     }
   }
 }
