@@ -4,31 +4,43 @@ export default class extends Controller {
   static targets = ["box"]
 
   select(event) {
-    const deleteButton = `
-      <div data-action="click->shelf#remove"
-      class="position-absolute top-0 text-danger bg-white rounded-circle shadow-sm d-flex align-items-center justify-content-center"
-      style="cursor: pointer; width: 20px; height: 20px; font-size: 10px;">
-      <i class="fa-solid fa-xmark"></i>
-      </div>`
     const clickedCube = event.currentTarget
     const movieTitle = clickedCube.dataset.shelfTitleParam
     const movieImage = clickedCube.dataset.shelfImageParam
-    const emptyBox = this.boxTargets.find(box => box.innerHTML === `<div class="placeholder d-flex justify-content-center"></div>`)
-    if (emptyBox) {
-      emptyBox.innerText = movieTitle
-      emptyBox.innerHTML = `<img src="${movieImage}">${deleteButton}`
-
-    } else {
-      console.log("Wow, wow, hold your spam big fella!")
+    const isDuplicate = this.boxTargets.some(box => box.innerHTML.includes(movieImage))
+    if (isDuplicate) {
+      window.alert("You have alzheimer? Content already chosen")
+      return
     }
+
+    const emptyBox = this.boxTargets.find(box => !box.querySelector(".shelf-item"))
+
+    if (!emptyBox) {
+      window.alert("Shelf is full!")
+      return
+    }
+
+    emptyBox.innerHTML = `
+      <div class="shelf-item position-relative d-flex justify-content-center">
+        <img src="${movieImage}" alt="${movieTitle}" class="img-fluid">
+
+        <button
+          type="button"
+          class="btn btn-sm btn-light position-absolute top-0 end-0 rounded-circle"
+          data-action="click->shelf#remove"
+        >
+          ×
+        </button>
+      </div>
+    `
   }
 
-  deselected(event) {
+  remove(event) {
+    event.stopPropagation()
     const button = event.currentTarget
-    const box = button.closest('[data-shelf-target="box"]')
-
-    if (box) {
-      box.innerHTML = ""
+    const shelfItem = button.closest(".shelf-item")
+    if (shelfItem) {
+      shelfItem.remove()
     }
   }
 }
