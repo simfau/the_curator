@@ -35,6 +35,7 @@ export default class extends Controller {
     event.stopPropagation()
     const button = event.currentTarget
     const shelfItem = button.closest(".shelf-item")
+    const boxTarget = button.closest("[data-shelf-target='box']")
 
     const originalMovieId = button.dataset.sourceId
 
@@ -45,6 +46,13 @@ export default class extends Controller {
     }
     if (shelfItem) {
       shelfItem.remove()
+      if (boxTarget) {
+        boxTarget.innerHTML = `
+          <div class="d-flex align-items-center justify-content-center text-muted">
+            <div class="placeholder d-flex justify-content-center"></div>
+          </div>
+        `;
+      }
     }
   }
 }
