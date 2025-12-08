@@ -83,6 +83,40 @@ class Content < ApplicationRecord
     end
   end
 
+  def self.contents_score(content_ids)
+    contents_scores = content_ids.map.with_index do |id, index|
+      "contents_score(results.tag_ids, #{id}) AS content_#{index+1}"
+    end
+
+    column_names = content_ids.map.with_index do |_, index|
+      "content_#{index+1}"
+    end
+
+    sql = <<-SQL
+      SELECT id, #{column_names.join(" + ")} AS combined
+      FROM (
+        SELECT results.id,
+          #{contents_scores.join(",")}
+        FROM (
+          select contents.id, array_agg(content_tags.tag_id) AS tag_ids
+          FROM contents
+          JOIN content_tags ON contents.id = content_tags.content_id
+          group by contents.id
+        ) as results
+      ) as list_of_results
+      WHERE id NOT IN (#{content_ids.join(",")})
+      ORDER BY combined DESC LIMIT 10
+    SQL
+
+    results = connection.execute(sql)
+
+    results.map do |h|
+      {
+        content: Content.find(h["id"]),
+        score: 100 * Math.log(((h["combined"]/content_ids.length)) * 10000 + 1, 10001)
+      }
+    end
+  end
   private
 
   def describe(content)

@@ -2,14 +2,14 @@
   <div class="d-flex justify-content-center align-items-center mt-5">
       <div id="recommendation_card ">
           <div class="img_card ">
-            <img src="<%= @content.image_url %>"
-                alt="<%= @content.title %>"
+            <img src="<%= @content[:content].image_url %>"
+                alt="<%= @content[:content].title %>"
                 class="img_tag">
             <div class="score_circle">
-              85%
+              <%= @content[:score].round %>
             </div>
             <div class="img_title">
-              <%= @content.title %>
+              <%= @content[:content].title %>
             </div>
         </div>
         <div class="explanation">
@@ -17,11 +17,11 @@
         </div>
 
         <div class="information">
-          <p><%= @content.description.presence || "No description available" %></p>
-          <p><strong>Creator:</strong> <%= @content.creator %></p>
-          <p><strong>Release date:</strong> <%= @content.date_of_release %></p>
-          <p><strong>Duration:</strong> <%= @content.duration %> seconds</p>
-          <p><strong>Popularity:</strong> <%= @content.popularity_score %></p>
+          <p><%= @content[:content].description.presence || "No description available" %></p>
+          <p><strong>Creator:</strong> <%= @content[:content].creator %></p>
+          <p><strong>Release date:</strong> <%= @content[:content].date_of_release %></p>
+          <p><strong>Duration:</strong> <%= @content[:content].duration %></p>
+          <p><strong>Popularity:</strong> <%= @content[:content].popularity_score %></p>
         </div>
 
       </div>
