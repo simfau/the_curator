@@ -15,14 +15,9 @@ export default class extends Controller {
   }
   select(event) {
     const clickedCube = event.currentTarget
+    const sourceId = clickedCube.id
     const movieTitle = clickedCube.dataset.shelfTitleParam
     const movieImage = clickedCube.dataset.shelfImageParam
-    const isDuplicate = this.boxTargets.some(box => box.innerHTML.includes(movieImage))
-    if (isDuplicate) {
-      window.alert("You have alzheimer? Content already chosen")
-      return
-    }
-
     const emptyBox = this.boxTargets.find(box => !box.querySelector(".shelf-item"))
 
 
@@ -31,15 +26,16 @@ export default class extends Controller {
       window.alert("Shelf is full!")
       return
     }
-
+    clickedCube.classList.add("picked")
     emptyBox.innerHTML = `
-      <div class="shelf-item position-relative d-flex justify-content-center">
-        <img src="${movieImage}" alt="${movieTitle}" class="img-fluid">
+        <div class="shelf-item position-relative d-flex justify-content-center">
+          <img src="${movieImage}" alt="${movieTitle}" class="img-fluid">
 
         <button
           type="button"
           class="btn btn-sm btn-light position-absolute top-0 end-0 rounded-circle"
           data-action="click->shelf#remove"
+          data-source-id="${sourceId}"
         >
           ×
         </button>
@@ -53,10 +49,26 @@ export default class extends Controller {
     event.stopPropagation()
     const button = event.currentTarget
     const shelfItem = button.closest(".shelf-item")
+    const boxTarget = button.closest("[data-shelf-target='box']")
+
+    const originalMovieId = button.dataset.sourceId
+
+    const originalMovieCard = document.getElementById(originalMovieId)
+
+    if (originalMovieCard) {
+      originalMovieCard.classList.remove("picked")
+    }
     if (shelfItem) {
       shelfItem.remove()
       this.updateButtons()
 
+      if (boxTarget) {
+        boxTarget.innerHTML = `
+          <div class="d-flex align-items-center justify-content-center text-muted">
+            <div class="placeholder d-flex justify-content-center"></div>
+          </div>
+        `;
+      }
     }
   }
 }
