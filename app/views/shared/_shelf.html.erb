@@ -3,18 +3,34 @@
   <div id="shelf" class="d-flex flex-column align-items-center fixed-bottom">
     <div class="d-flex justify-content-evenly w-100 mb-2 p-2">
 
-        <div data-shelf-target="box" class="position-relative flex-fill justify-content-center content-cube-shelf"><div class="placeholder d-flex justify-content-center"></div></div>
+        <div data-shelf-target="box" class="position-relative flex-fill justify-content-center content-cube-shelf">
+          <div class="placeholder d-flex justify-content-center"></div>
+        </div>
 
-        <div data-shelf-target="box" class="position-relative flex-fill justify-content-center content-cube-shelf"><div class="placeholder d-flex justify-content-center"></div></div>
+        <div data-shelf-target="box" class="position-relative flex-fill justify-content-center content-cube-shelf">
+          <div class="placeholder d-flex justify-content-center"></div>
+        </div>
 
-        <div data-shelf-target="box" class="position-relative flex-fill justify-content-center content-cube-shelf"><div class="placeholder d-flex justify-content-center"></div></div>
+        <div data-shelf-target="box" class="position-relative flex-fill justify-content-center content-cube-shelf">
+          <div class="placeholder d-flex justify-content-center"></div>
+        </div>
 
-        <div data-shelf-target="box" class="position-relative flex-fill justify-content-center content-cube-shelf"><div class="placeholder d-flex justify-content-center"></div></div>
+        <div data-shelf-target="box" class="position-relative flex-fill justify-content-center content-cube-shelf">
+          <div class="placeholder d-flex justify-content-center">
+        </div>
 
+      </div>
     </div>
+    <div class="d-flex gap-2 mb-2">
+      <%= link_to "Recommend Song",
+          recommendation_path(action_type: "song"),
+          class: "btn btn-light btn-lg text-center align-self-center disabled",
+          data: { shelf_target: "actionButton" } %>
 
-    <%= link_to "Curate", recommendation_path(action_type:params[:action_type], content_ids:[Content.all.shuffle.first(4)]),
-            class: "btn btn-light btn-lg text-center align-self-center" %>
+      <%= link_to "Recommend Movie",
+          recommendation_path(action_type: "movie"),
+          class: "btn btn-outline-light btn-lg text-center align-self-center disabled",
+          data: { shelf_target: "actionButton" } %>
+    </div>
   </div>
-
 </div>
