@@ -1,3 +1,5 @@
+require 'ruby_llm'
+
 class Content < ApplicationRecord
   has_many :content_tags, dependent: :destroy
 
@@ -76,14 +78,14 @@ class Content < ApplicationRecord
       end
 
       provider_record.adding(provider_ids, added)
-
+      process(added)
       puts " done✅"
     else
       raise "Unsupported type: #{type}❌"
     end
   end
 
-  def self.contents_score(content_ids)
+  def self.contents_score(content_ids, format)
     contents_scores = content_ids.map.with_index do |id, index|
       "contents_score(results.tag_ids, #{id}) AS content_#{index+1}"
     end
@@ -92,23 +94,30 @@ class Content < ApplicationRecord
       "content_#{index+1}"
     end
 
+    content_ids_str = content_ids.join(",")
+
     sql = <<-SQL
-      SELECT id, #{column_names.join(" + ")} AS combined
+      SELECT id, format, (#{column_names.join(" + ")}) AS combined
       FROM (
-        SELECT results.id,
+        SELECT results.id, results.format,
           #{contents_scores.join(",")}
         FROM (
-          select contents.id, array_agg(content_tags.tag_id) AS tag_ids
+          SELECT contents.id, contents.format, array_agg(content_tags.tag_id) AS tag_ids
           FROM contents
           JOIN content_tags ON contents.id = content_tags.content_id
-          group by contents.id
-        ) as results
-      ) as list_of_results
-      WHERE id NOT IN (#{content_ids.join(",")})
-      ORDER BY combined DESC LIMIT 300
+          GROUP BY contents.id, contents.format
+        ) AS results
+      ) AS list_of_results
+      WHERE id NOT IN (#{content_ids_str})
+        AND format = ?
+      ORDER BY combined DESC
+      LIMIT 3
     SQL
 
-    results = connection.execute(sql)
+    # Execute with ActiveRecord
+    results = ActiveRecord::Base.connection.exec_query(
+      ActiveRecord::Base.sanitize_sql_array([sql, format])
+    )
 
     results.map do |h|
       {
@@ -117,6 +126,9 @@ class Content < ApplicationRecord
       }
     end
   end
+
+
+
   private
 
   def describe(content)
@@ -125,7 +137,7 @@ class Content < ApplicationRecord
 
   def process(content)
     if content.is_processed.nil?
-      # call the ruby llm here to generate tags
+      ContentTag.new.tagging(content)
       # create ContentTag records (or call ContentTag method to do so)
       # content.update!(is_processed: Time.now)
     end

@@ -1,0 +1,32 @@
+.home-search-input {
+  width: 90%;
+  padding-top: 20px;
+}
+
+.form-control {
+  background-color: black;
+  border-color: $curator-darkgrey;
+  border-radius: 8px;
+}
+
+.form-control::placeholder {
+  color: $curator-darkgrey;
+  font-family: "Inika";
+  font-weight: normal;
+  font-style: 12px;
+  border-radius: 8px;
+  border-color: $curator-darkgrey;
+  background-color: black;
+}
+
+.form-control:focus {
+  color: $curator-darkgrey;
+  font-family: "Inika";
+  font-weight: normal;
+  font-style: 12px;
+  border-radius: 8px;
+  border-color: $curator-darkgrey;
+  background-color: black;
+  box-shadow: none;
+  outline: 0;
+}

@@ -5,6 +5,22 @@
         <img src="<%= @content[:content].image_url %>"
             alt="<%= @content[:content].title %>"
             class="img_tag">
+  <div class="d-flex justify-content-center align-items-center mt-5">
+      <div id="recommendation_card ">
+          <div class="img_card ">
+            <img src="<%= @content[:content].image_url %>"
+                alt="<%= @content[:content].title %>"
+                class="img_tag">
+            <div class="score_circle" style="color: black">
+              <%= @content[:score].round %>
+            </div>
+            <div class="img_title">
+              <%= @content[:content].title %>
+            </div>
+        </div>
+        <div class="explanation">
+          <h3><%= @explanation %></h3>
+        </div>
 
         <div class="score_circle" style="color: black">
           <%= @content[:score].round %>

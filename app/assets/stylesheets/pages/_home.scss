@@ -8,7 +8,63 @@
 .intro {
   display: flex;
   justify-content: center;
-  line-height: 16px;
-  margin-left: 60px;
-  margin-right: 60px;;
+  line-height: 1.2;
+  margin-left: 50px;
+  margin-right: 50px;;
+}
+
+.filter-icon {
+  max-width: 16%;
+  height: auto;
+  // padding-bottom: 50px;
+}
+
+.super-tight-header h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1;
+
+  white-space: nowrap;
+}
+
+.super-tight-header h1:first-child {
+  margin-right: -20px;
+}
+
+.super-tight-header h1:last-child {
+  margin-left: -20px;
+}
+
+.super-tight-header img {
+  margin: 0;
+  padding-bottom: 5px;
+  vertical-align: middle;
+}
+
+.search-input {
+  width: 90%;
+}
+
+.form-control {
+  background-color: black;
+  border-color: $curator-darkgrey;
+  border-radius: 8px;
+}
+
+.form-control::placeholder {
+  color: $curator-darkgrey;
+  font-family: "Inika";
+  font-weight: normal;
+  font-style: 12px;
+  border-color: $curator-darkgrey;
+}
+
+.form-control:focus {
+  background-color: black;
+  border-color: $curator-darkgrey;
+  border-radius: 8px;
+  color: $curator-darkgrey;
+  font-family: "Inika";
+  font-weight: normal;
+  font-style: 12px;
 }
