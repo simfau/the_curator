@@ -78,7 +78,7 @@ class Content < ApplicationRecord
       end
 
       provider_record.adding(provider_ids, added)
-      process(added)
+      # process(added)
       puts " done✅"
     else
       raise "Unsupported type: #{type}❌"
