@@ -78,7 +78,7 @@ class Content < ApplicationRecord
       end
 
       provider_record.adding(provider_ids, added)
-
+      process(added)
       puts " done✅"
     else
       raise "Unsupported type: #{type}❌"
@@ -137,7 +137,7 @@ class Content < ApplicationRecord
 
   def process(content)
     if content.is_processed.nil?
-      # call the ruby llm here to generate tags
+      ContentTag.new.tagging(content)
       # create ContentTag records (or call ContentTag method to do so)
       # content.update!(is_processed: Time.now)
     end
