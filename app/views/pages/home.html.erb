@@ -1,20 +1,17 @@
-<div class="container text-center mt-5">
+<div class="container home-container text-center mt-5">
 <%# <%= render "shared/search_form" %>
-  <h1>The Curator</h1>
-    <p>*********
+  <div class="d-flex justify-content-center pb-5">
+    <h1>THE CURA</h1>
+    <img src="./app/assets/images/Curator_T2.png">
+    <h1>OR</h1>
+  </div>
 
-
-    </p>
-  <h4>What would you like to discover today?</h4>
-    <div class="d-flex justify-content-center">
-      <%# <%= link_to "Song", contents_search_path, class: "btn btn-primary btn-lg me-2" %>
-      <%# <%= link_to "Movie", contents_search_path, class: "btn btn-primary btn-lg ms-2" %>
-      <%= form_with url: contents_search_path, method: :get, local: true do |form| %>
-      <%= form.button "Song", type: "submit", name: "action_type", value: "Song", class: "btn btn-light" %>
-      <%= form.button "Movie", type: "submit", name: "action_type", value: "Movie", class: "btn btn-light" %>
-      <% end %>
-
-    </div>
+  <div class="d-flex pt-3">
+    <p class="intro">I’ll help you discover a new artwork based on your personal taste.  Let me get to know you...</p>
+  </div>
+  <div class="d-flex justify-content-center">
+    <%= render "shared/search_form" %>
+  </div>
 
 
 

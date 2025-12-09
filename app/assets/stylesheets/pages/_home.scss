@@ -1,1 +1,14 @@
 // Specific CSS for your home-page
+
+.home-container {
+  padding-top: 50%;
+  width: 390px;
+}
+
+.intro {
+  display: flex;
+  justify-content: center;
+  line-height: 16px;
+  margin-left: 60px;
+  margin-right: 60px;;
+}
