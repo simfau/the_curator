@@ -1,5 +1,4 @@
 <div class="container home-container text-center mt-5">
-<%# <%= render "shared/search_form" %>
   <div class="d-flex justify-content-center align-items-center pb-4 super-tight-header">
     <h1>THE CURA</h1>
     <%= image_tag "Curator_T2.png", alt:"curator-filter-icon", class:"filter-icon" %>
@@ -10,12 +9,12 @@
     <p class="intro">I’ll help you discover a new artwork based on your personal taste.  Let me get to know you...</p>
   </div>
   <div class="d-flex justify-content-center">
-    <div class="row justify-content-center home-search-input">
+    <div class="row justify-content-center search-box">
         <%= form_with url: contents_search_path, method: :get, class: "d-flex" do %>
           <%= label_tag :query, "Search contents", class: "visually-hidden" %>
           <%= text_field_tag :query,
                 params[:query],
-                class: "form-control",
+                class: "form-control search-input",
                 placeholder: "Type in a movie or a song you like"
             %>
           <%= hidden_field_tag :action_type,
