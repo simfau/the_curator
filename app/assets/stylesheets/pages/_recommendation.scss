@@ -2,18 +2,19 @@
   height: 100vh;
   border:solid, 1px, green;
 }
-
-#recommendation_card{
-max-width: 800px ;
-  width: 100%;
+.recommendation_card{
+// max-width: 800px ;
+  width: 95%;
   border: 1px solid #ccc;
-  padding: 16px;
+  // padding: 16px;
   background: $curator-charcoal;
+  margin: 2%
 }
+
 .img_card{
   border:solid, 1px, red;
   position: relative;
-  width: 200px;
+  width: 90%;
   overflow: hidden;
 }
 .img_card img{
