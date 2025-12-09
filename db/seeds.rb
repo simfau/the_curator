@@ -16,7 +16,7 @@ target = 3 #set target number of entries to add for each format
 
 seed_movies(target)
 
-# seed_songs(target)
+seed_songs(target)
 
 # skipped_tags = 0
 # tags_counter = 0
