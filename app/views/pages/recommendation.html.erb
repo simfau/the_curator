@@ -5,8 +5,14 @@
         <img src="<%= @content[:content].image_url %>"
             alt="<%= @content[:content].title %>"
             class="img_tag">
-        <div class="score_circle" style="color: black">
-          <%= @content[:score].round %>
+        <div class="stamp_wrapper">
+          <%= image_tag "curator_stamp.png",class: "stamp-img" %>
+          <div class="stamp_text">
+            <div>
+              <div class="match_score"><%= @content[:score].round %>%</div>
+              <div class="match_word">Match</div>
+            </div>
+          </div>
         </div>
         <div class="img_title">
           <%= @content[:content].title %>
