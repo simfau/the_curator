@@ -4,13 +4,13 @@
       <% @contents.each do |content| %>
         <div class="col-4">
           <h5 class="text-center"><%= content.title %></h5>
-            <div id="<%= content.id %>"
-                 style="background-image: url('<%= content.image_url %>'); background-size: contain; background-repeat: no-repeat;"
-                 class="content-cube card"
-                 data-action="click->shelf#select"
-                 data-shelf-title-param="<%= content.title %>"
-                 data-shelf-image-param="<%= content.image_url %>">
-            </div>
+          <div id="<%= content.id %>"
+               style="background-image: url('<%= content.image_url %>'); background-size: contain; background-repeat: no-repeat;"
+               class="content-cube card"
+               data-action="click->shelf#select touchend->shelf#select"
+               data-shelf-title-param="<%= content.title %>"
+               data-shelf-image-param="<%= content.image_url %>">
+          </div>
         </div>
       <% end %>
     </div>

@@ -41,7 +41,7 @@ export default class extends Controller {
         <button
           type="button"
           class="btn btn-sm btn-light position-absolute top-0 end-0 rounded-circle"
-          data-action="click->shelf#remove"
+          data-action="click->shelf#remove touchend->shelf#remove"
           data-source-id="${sourceId}"
         >
           ×
