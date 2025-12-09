@@ -1,4 +1,10 @@
 <div id="body">
+  <div class="recommendation_card mt-5">
+    <div class="img_container d-flex justify-content-center">
+      <div class="img_card ">
+        <img src="<%= @content[:content].image_url %>"
+            alt="<%= @content[:content].title %>"
+            class="img_tag">
   <div class="d-flex justify-content-center align-items-center mt-5">
       <div id="recommendation_card ">
           <div class="img_card ">
@@ -16,20 +22,30 @@
           <h3><%= @explanation %></h3>
         </div>
 
-        <div class="information">
-          <p><%= @content[:content].description.presence || "No description available" %></p>
-          <p><strong>Creator:</strong> <%= @content[:content].creator %></p>
-          <p><strong>Release date:</strong> <%= @content[:content].date_of_release %></p>
-          <p><strong>Duration:</strong> <%= @content[:content].duration %></p>
-          <p><strong>Popularity:</strong> <%= @content[:content].popularity_score %></p>
+        <div class="score_circle" style="color: black">
+          <%= @content[:score].round %>
         </div>
-
-      </div>
-
-    </div>
-    <div class="d-flex fixed-bottom">
-      <div class="d-flex justify-content-evenly w-100 mb-2 p-2">
-        <%= link_to "Home", root_path, class: "btn btn-light text-center align-self-center" %>
+        <div class="img_title">
+          <%= @content[:content].title %>
+        </div>
       </div>
     </div>
+    <div class="explanation">
+      <h3>This is an explanation box</h3>
+    </div>
+
+    <div class="information">
+      <p><%= @content[:content].description.presence || "No description available" %></p>
+      <p><strong>Creator:</strong> <%= @content[:content].creator %></p>
+      <p><strong>Release date:</strong> <%= @content[:content].date_of_release %></p>
+      <p><strong>Duration:</strong> <%= @content[:content].duration %></p>
+      <p><strong>Popularity:</strong> <%= @content[:content].popularity_score %></p>
+    </div>
+
+  </div>
+  <div class="footer d-flex fixed-bottom">
+    <div class="d-flex justify-content-evenly w-100 mb-2 p-2">
+      <%= link_to "Home", root_path, class: "btn btn-light text-center align-self-center" %>
+    </div>
+  </div>
 </div>
