@@ -11,7 +11,9 @@ class PagesController < ApplicationController
     end
   end
   def recommendation
-    @contents = Content.contents_score(params[:content_ids].flatten)
-    @content = @contents.select{ |content| content[:content][:format] == params[:action_type] }.first
+    params[:action_type] == 'movie' ? format = 1 : format = 0
+    @content = Content.contents_score(params[:content_ids].flatten, format).first
+
+    # @content = @contents.select{ |content| content[:content][:format] == params[:action_type] }.first
   end
 end
