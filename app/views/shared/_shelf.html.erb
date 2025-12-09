@@ -23,12 +23,12 @@
     </div>
     <div class="d-flex gap-2 mb-2">
       <%= link_to "Recommend Song",
-          recommendation_path(action_type: "Song"),
+          recommendation_path(action_type: "song"),
           class: "btn btn-light btn-lg text-center align-self-center disabled",
           data: { shelf_target: "actionButton" } %>
 
       <%= link_to "Recommend Movie",
-          recommendation_path(action_type: "Movie"),
+          recommendation_path(action_type: "movie"),
           class: "btn btn-outline-light btn-lg text-center align-self-center disabled",
           data: { shelf_target: "actionButton" } %>
     </div>

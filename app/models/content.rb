@@ -105,7 +105,7 @@ class Content < ApplicationRecord
         ) as results
       ) as list_of_results
       WHERE id NOT IN (#{content_ids.join(",")})
-      ORDER BY combined DESC LIMIT 10
+      ORDER BY combined DESC LIMIT 50
     SQL
 
     results = connection.execute(sql)
