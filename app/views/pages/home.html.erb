@@ -10,6 +10,20 @@
     <p class="intro">I’ll help you discover a new artwork based on your personal taste.  Let me get to know you...</p>
   </div>
   <div class="d-flex justify-content-center">
-    <%= render "shared/search_form" %>
+    <div class="row justify-content-center">
+  <div class="col-sm-4">
+    <%= form_with url: contents_search_path, method: :get, class: "d-flex" do %>
+      <%= label_tag :query, "Search contents", class: "visually-hidden" %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control search-input",
+            placeholder: "Type in a movie or a song you like"
+        %>
+      <%= hidden_field_tag :action_type,
+            params[:action_type] %>
+      <%# <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
   </div>
 </div>

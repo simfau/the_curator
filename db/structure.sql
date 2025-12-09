@@ -1,7 +1,7 @@
-\restrict Ad9EcLZN2Nm0fK7SGRJ83Q42q00UljW9cxVEMdqiehj3avaPTb9gvjRygjFx5mk
+\restrict 7KPhefV6HAaABSGSplZC09I2iuTXEmencXsPI446g9cqmcOnetCOjNjKORmoXWa
 
--- Dumped from database version 15.14 (Homebrew)
--- Dumped by pg_dump version 18.0
+-- Dumped from database version 15.15 (Homebrew)
+-- Dumped by pg_dump version 18.1
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -31,7 +31,7 @@ $$;
 --
 
 CREATE FUNCTION public.contents_score(a bigint[], b bigint) RETURNS double precision
-    LANGUAGE sql STRICT
+    LANGUAGE sql IMMUTABLE STRICT
     AS $$
         SELECT jaccard_index(
           a,
@@ -50,11 +50,11 @@ CREATE FUNCTION public.contents_score(a bigint[], b bigint) RETURNS double preci
 --
 
 CREATE FUNCTION public.jaccard_index(a bigint[], b bigint[]) RETURNS double precision
-    LANGUAGE sql STRICT
+    LANGUAGE sql IMMUTABLE STRICT
     AS $$
           SELECT
               CASE
-                  WHEN union_count = 0 THEN 1.00
+                  WHEN union_count = 0 THEN 0.0
                   ELSE intersection_count::double precision / union_count::double precision
               END
           FROM (
@@ -355,7 +355,7 @@ ALTER TABLE ONLY public.provider_records
 -- PostgreSQL database dump complete
 --
 
-\unrestrict Ad9EcLZN2Nm0fK7SGRJ83Q42q00UljW9cxVEMdqiehj3avaPTb9gvjRygjFx5mk
+\unrestrict 7KPhefV6HAaABSGSplZC09I2iuTXEmencXsPI446g9cqmcOnetCOjNjKORmoXWa
 
 SET search_path TO "$user", public;
 
