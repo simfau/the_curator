@@ -21,18 +21,14 @@
 
       </div>
     </div>
-
-    <%# <%= link_to "Curate", recommendation_path(action_type:params[:action_type], content_ids:[Content.all.shuffle.first(4)]),
-            <%# class: "btn btn-light btn-lg text-center align-self-center" %>
-
-      <div class="d-flex gap-2 mb-2">
+    <div class="d-flex gap-2 mb-2">
       <%= link_to "Recommend Song",
-          recommendation_path(action_type: "Song", content_ids: (Content.all.shuffle.first(4))),
+          recommendation_path(action_type: "song"),
           class: "btn btn-light btn-lg text-center align-self-center disabled",
           data: { shelf_target: "actionButton" } %>
 
       <%= link_to "Recommend Movie",
-          recommendation_path(action_type: "Movie", content_ids: (Content.all.shuffle.first(3))),
+          recommendation_path(action_type: "movie"),
           class: "btn btn-outline-light btn-lg text-center align-self-center disabled",
           data: { shelf_target: "actionButton" } %>
     </div>

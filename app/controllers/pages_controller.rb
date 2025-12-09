@@ -11,6 +11,7 @@ class PagesController < ApplicationController
     end
   end
   def recommendation
-    @content = Content.contents_score(params[:content_ids].flatten).first
+    @contents = Content.contents_score(params[:content_ids].flatten)
+    @content = @contents.select{ |content| content[:content][:format] == params[:action_type] }.first
   end
 end
