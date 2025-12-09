@@ -8,10 +8,6 @@ require_relative 'seeds/songs'
 # ContentTag.destroy_all
 # Content.destroy_all
 
-# make sure you have your API keys set in your .env file
-Tmdb::Api.key(ENV["TMDB_API_KEY"])
-RSpotify::authenticate(ENV["SPOTIFY_KEY"], ENV["SPOTIFY_SECRET"])
-
 @content = Content.new
 @provider_record = ProviderRecord.new
 

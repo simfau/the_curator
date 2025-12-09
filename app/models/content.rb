@@ -45,12 +45,18 @@ class Content < ApplicationRecord
       provider_record.adding(provider_ids, added)
 
       puts " done✅"
-
+      return added
     when :movie
-      puts "#{content['title']}"
-      director = Tmdb::Movie.crew(content['id']).find { |crew| crew['known_for_department'] == "Directing" }&.[]('name')
-      puts "  No director❌" if director.nil?
 
+      puts "#{content['title']}"
+      crew = (if content['credits']
+        content['credits']['crew']
+      else
+        Tmdb::Movie.crew(content['id'])
+      end)
+      director = crew.find { |crew| crew['known_for_department'] == "Directing" }&.[]('name')
+
+      puts "  No director❌" if director.nil?
       if content['poster_path']
         img  = "https://image.tmdb.org/t/p/original#{content['poster_path']}"
       else
@@ -78,8 +84,9 @@ class Content < ApplicationRecord
       end
 
       provider_record.adding(provider_ids, added)
-      process(added)
+      # process(added)
       puts " done✅"
+      return added
     else
       raise "Unsupported type: #{type}❌"
     end
