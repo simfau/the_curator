@@ -1,15 +1,14 @@
-<div class="row justify-content-center">
-  <div class="col-sm-4">
+<div class="d-flex justify-content-center pt-3">
+  <div class="justify-content-center contents-search-input">
     <%= form_with url: contents_search_path, method: :get, data: {turbo_stream: true}, class: "d-flex" do %>
       <%= label_tag :query, "Search contents", class: "visually-hidden" %>
       <%= text_field_tag :query,
             params[:query],
-            class: "form-control search-input",
+            class: "form-control",
             placeholder: "Type in a movie or a song you like"
         %>
       <%= hidden_field_tag :action_type,
             params[:action_type] %>
-      <%# <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
