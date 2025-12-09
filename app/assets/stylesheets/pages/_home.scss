@@ -12,3 +12,31 @@
   margin-left: 60px;
   margin-right: 60px;;
 }
+
+.filter-icon {
+  max-width: 16%;
+  height: auto;
+  // padding-bottom: 50px;
+}
+
+.super-tight-header h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1;
+
+  white-space: nowrap;
+}
+
+.super-tight-header h1:first-child {
+  margin-right: -10px;
+}
+
+.super-tight-header h1:last-child {
+  margin-left: -10px;
+}
+
+.super-tight-header img {
+  margin: 0;
+  padding-bottom: 5px;
+  vertical-align: middle;
+}
