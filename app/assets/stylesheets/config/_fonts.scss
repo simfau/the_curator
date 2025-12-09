@@ -3,8 +3,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 
 // Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
+$body-font: "Archivo Black", "Inika";
+$headers-font: "Inika";
+
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
@@ -19,4 +20,16 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
   font-family: "Archivo Black", sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+
+h1 {
+  font-family: "Inika";
+  font-weight: bold;
+  font-style: 25px;
+}
+
+p {
+  font-family: "Inika";
+  font-weight: normal;
+  font-style: 12px;
 }
