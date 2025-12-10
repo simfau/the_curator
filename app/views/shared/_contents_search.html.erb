@@ -13,14 +13,19 @@
               data-shelf-image-param="<%= content.image_url %>"
               data-shelf-format-param="<%= content.format %>"
               data-shelf-creator-param="<%= content.creator %>">
-              <img src="<%= content.image_url %>" alt="<%= content.title %> image">
+
               <% if content.format == "song" %>
+                <img class="song-img" src="<%= content.image_url %>" alt="<%= content.title %> image">
                 <div class="song-title d-flex mt-auto">
-                  <h5 class="text-center mb-0"><%= content.title.truncate(20) %></h5>
-                  <p class="mb-0"><%= content.creator %></p>
+                  <h5 class="text-center mb-1"><%= content.title.truncate(20) %></h5>
+                  <p class="text-center mb-3"><%= content.creator %></p>
                 </div>
 
               <% end %>
+              <% if content.format == "movie" %>
+                <img src="<%= content.image_url %>" alt="<%= content.title %> image">
+              <% end %>
+
           </div>
         </div>
       <% end %>
