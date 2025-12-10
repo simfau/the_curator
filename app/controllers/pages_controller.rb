@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     if params[:query].present?
       MovieSearch.run(params[:query])
       SongSearch.run(params[:query])
-      @contents = Content.search_by_title_creator_description(params[:query]).limit(9)
+      @contents = Content.search_by_title_creator_description(params[:query]).reorder(popularity_score: :desc)
     else
       @contents = Content.all.shuffle.first(9)
     end
