@@ -1,18 +1,20 @@
 <div class="d-flex justify-content-center pt-3">
   <div class="d-flex justify-content-center search-box">
     <%= form_with url: contents_search_path, method: :get,
-      data: { turbo_stream: true, controller: "search",
-      action: "turbo:submit-end->search#reset" },
-      class: "d-flex" do %>
+          data: { turbo_stream: true, controller: "search",
+          action: "turbo:submit-end->search#reset" },
+          class: "d-flex" do %>
+
       <%= label_tag :query, "Search contents", class: "visually-hidden" %>
+
       <%= text_field_tag :query,
-            '',
+            "",
             class: "form-control search-input",
             placeholder: "Type in a movie or a song you like",
             data: { search_target: "input" }
         %>
-      <%= hidden_field_tag :action_type,
-            params[:action_type] %>
+
+      <%= hidden_field_tag :action_type, params[:action_type] %>
     <% end %>
   </div>
 </div>
