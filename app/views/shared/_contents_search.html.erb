@@ -4,7 +4,7 @@
     <p class="ms-3 mt-2">Select your title from the list...</p>
     <div class="content-border row g-4 mt-2">
       <% @contents.each do |content| %>
-        <div class="col-4">
+        <div class="col-4 mt-0">
 
           <div id="<%= content.id %>"
               class="content-box card"
@@ -12,11 +12,11 @@
               data-shelf-title-param="<%= content.title %>"
               data-shelf-image-param="<%= content.image_url %>">
               <% if content.format == "movie" %>
-                  <img src="<%= content.image_url %>" alt="<%= content.title %> image">
+                  <img src="<%= content.image_url %>" alt="<%= content.title %> image" class="m-0">
               <% end %>
               <% if content.format == "song" %>
                 <div class="song-image">
-                  <img src="<%= content.image_url %>" alt="<%= content.title %> image">
+                  <img src="<%= content.image_url %>" alt="<%= content.title %> image" class="m-0">
                 </div>
                 <div class="song-title d-flex flex-column align-items-center">
                   <h5 class="text-center mt-1 mb-0"><%= content.title.truncate(20) %></h5>
