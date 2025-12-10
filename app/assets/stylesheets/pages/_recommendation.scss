@@ -6,14 +6,13 @@
 .recommendation_card{
   width: 95%;
   border: 1px solid #ccc;
-  background: $curator-charcoal;
   margin: 2%;
   }
 
 .img_card{
-  border:solid, 1px, red;
   width: 90%;
   overflow: hidden;
+  padding: 15px;
 }
 .img_card img{
   width: 100%;
@@ -43,6 +42,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.song_title{
+  font-family: "Inika";
+  font-weight: bold;
+  font-size: 38px;
+  padding: 10px;
+}
+.song_creator{
+  font-family: "Inika";
+  font-weight: normal;
+  font-size: 16px;
+  padding-left: 10px;
 }
 
 .explanation {
