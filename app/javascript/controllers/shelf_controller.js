@@ -24,7 +24,6 @@ export default class extends Controller {
 
 
    if (!emptyBox) {
-    console.log("Shelf is full! Triggering alert...");
     document.getElementById("custom-alert").classList.remove("hidden")
     return
   }
