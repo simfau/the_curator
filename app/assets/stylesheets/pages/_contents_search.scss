@@ -1,15 +1,45 @@
-.content-cube {
+.content-box {
   aspect-ratio: 1 / 1.5   ;
   display: flex;
-  justify-content: center;
+  flex-direction:column;
+  justify-content: space-between;
   align-items: center;
-  background-color: #f8f9fa;
-  border: 1px solid #dee2e6;
-  padding: 10px;
+  padding: 2px;
   overflow: hidden;
+  height: 100%;
+  background-color: $curator-card-background;
 
+}
+
+.content-box img {
+    // flex-shrink: 0;
+    width: 100%;
+    /* 2. Allow the image to grow/shrink based on the available space
+       between it and the song title box */
+    flex-grow: 1;
+    /* 3. This property is key for images in Flexbox!
+       It tells the image how to fit inside the space allocated by flex-grow. */
+    object-fit: cover;
+}
+
+.content-border{
+  padding: 10px;
+  border-color: #dee2e6;
+  border-radius: 8px;
+  border-width: 1px;         /* 1. Set the thickness (e.g., 1 pixel) */
+  border-style: solid;
 }
 
 .search-container {
   padding-bottom: 220px;
+}
+
+.song-title h5 {
+  color: $curator-white;
+  font-size: 12px;
+}
+
+.song-title p{
+  color: $curator-white;
+  font-size: 8px;
 }
