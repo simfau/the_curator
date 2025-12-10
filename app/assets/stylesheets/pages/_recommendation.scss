@@ -1,17 +1,14 @@
 #body{
-  height: 100vh;
-  position: relative;
+  // border:solid, 1px, green;
   color: $light-gray;
 }
-.recommendation_card{
-  padding-top: 45px;
-  outline: solid 1px red;
+
+.recommendation_card {
+
 }
 
-.img_card{
-  width: 90%;
-  overflow: hidden;
-
+.img_card {
+  position: relative;
 }
 .img_card > img{
   width: auto;
@@ -22,8 +19,8 @@
 .stamp_wrapper{
   transform: rotate(-19.36deg);
   position: absolute;
-  top: 10px;
-  right: calc(50vw - 188px);
+  top: -34px;
+  right: -80px;
   width: 122px;
   height: 122px;
   border-radius: 50%;
@@ -45,6 +42,12 @@
   justify-content: center;
   text-shadow: 0 4.3px 4.3px rgba(0, 0, 0, 0.35);
 }
+
+.content-and-stamp {
+ overflow-x: hidden;
+ padding-top: 45px;
+}
+
 .match_score{
   margin-top: -18px;
   margin-left: 10px;
@@ -79,4 +82,45 @@
 
 .explanation {
   border: solid,1px, $curator-golden;
+}
+
+.small_based_on_img {
+  width: 25vw;
+  border-radius: 8px;
+}
+
+.based_on_each {
+  background-color: black;
+  border-radius: 16px;
+  border: 1px solid #ccc;
+  color: #ccc;
+}
+
+.btn-white-border {
+  color: #ccc;
+  background-color: black;
+  border: 1px solid #ccc ;
+  font-size: 16px;
+  border-radius: 16px;
+  width: 180px;
+  height: 40px;
+}
+
+.gradient-scroll-indicator {
+  height: 150px;
+  width: 150vw;
+  background: linear-gradient(180deg,rgba(26, 26, 26, 0) 1%, rgba(26, 26, 26, 1) 100%);
+}
+
+.btn-footer-container {
+  background-color: $curator-background;
+  width: 100vw;
+}
+
+.footer {
+ width: 100vw;
+}
+
+.based_on {
+  margin-bottom: 150px;
 }
