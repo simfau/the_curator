@@ -11,7 +11,7 @@
               data-shelf-image-param="<%= content.image_url %>">
               <img src="<%= content.image_url %>" alt="<%= content.title %> image">
               <% if content.format == "song" %>
-                <div class="song-title mt-auto">
+                <div class="song-title d-flex mt-auto">
                   <h5 class="text-center mb-0"><%= content.title.truncate(20) %></h5>
                   <p class="mb-0"><%= content.creator %></p>
                 </div>

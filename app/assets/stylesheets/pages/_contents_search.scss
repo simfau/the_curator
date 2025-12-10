@@ -24,9 +24,9 @@
 
 .content-border{
   padding: 10px;
-  border-color: #dee2e6;
+  border-color: $curator-darkgrey;
   border-radius: 8px;
-  border-width: 1px;         /* 1. Set the thickness (e.g., 1 pixel) */
+  border-width: 1px;
   border-style: solid;
 }
 
@@ -36,7 +36,7 @@
 
 .song-title h5 {
   color: $curator-white;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .song-title p{
