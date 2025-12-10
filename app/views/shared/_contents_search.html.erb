@@ -1,28 +1,24 @@
 <div id="contents_search">
   <div class="container mt-4">
-    <div class="content-border row g-4 mt-2">
+    <div class="content-border row g-4">
       <% @contents.each do |content| %>
-        <div class="col-4 mt-0">
+        <div class="col-4">
 
           <div id="<%= content.id %>"
               class="content-box card"
               data-action="click->shelf#select"
-              data-shelf-title-param="<%= content.title %>"
-              data-shelf-image-param="<%= content.image_url %>">
-              <% if content.format == "movie" %>
-                  <img src="<%= content.image_url %>" alt="<%= content.title %> image" class="m-0">
-              <% end %>
+              data-shelf-title-param="<%= content.title.truncate(20) %>"
+              data-shelf-image-param="<%= content.image_url %>"
+              data-shelf-format-param="<%= content.format %>"
+              data-shelf-creator-param="<%= content.creator %>">
+              <img src="<%= content.image_url %>" alt="<%= content.title %> image">
               <% if content.format == "song" %>
-                <div class="song-image">
-                  <img src="<%= content.image_url %>" alt="<%= content.title %> image" class="m-0">
+                <div class="song-title d-flex mt-auto">
+                  <h5 class="text-center mb-0"><%= content.title.truncate(20) %></h5>
+                  <p class="mb-0"><%= content.creator %></p>
                 </div>
-                <div class="song-title d-flex flex-column align-items-center">
-                  <h5 class="text-center mt-1 mb-0"><%= content.title.truncate(20) %></h5>
-                  <p class="text-center m-0"><%= content.creator %></p>
-                </div>
+
               <% end %>
-
-
           </div>
         </div>
       <% end %>
