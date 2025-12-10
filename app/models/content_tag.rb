@@ -12,7 +12,8 @@ enum category: {
   aesthetic_style: 5,     # Aesthetic qualities (replaces `visual_style`, `texture`, `color_palette`)
   philosophy: 6,          # Underlying ideas/worldviews
   cultural_context: 7,
-  unknown: 8
+  unknown: 8,
+  emotion: 9
 }
 
   def tagging(content = nil)
@@ -56,7 +57,7 @@ enum category: {
       {
         messages: [
           { role: "user",
-            content: "Generate tags for the following content: #{content.title} by #{content.creator} from #{content.date_of_release} using the 'tags-from-content' tool. Ensure all tags are less than 20 characters. Do not include any extra text or reasoning in the output. Distribute exctly 50 tags as you wish in the categories (max 40 tags per category)" }
+            content: "Generate short (one or two words) tags for the following content: #{content.title} by #{content.creator} from #{content.date_of_release} using the 'tags-from-content' tool. Do not include any extra text or reasoning in the output. Distribute exactly 50 tags as you wish in the categories." }
         ],
         model: @ai_model,
         stream: false,
