@@ -1,32 +1,28 @@
 #body{
-  width: 100vw;
   // border:solid, 1px, green;
+  color: $light-gray;
 }
-.recommendation_card{
-// max-width: 800px ;
-  width: 100%;
-  border: 1px solid #ccc;
-  background: $curator-charcoal;
-  margin: 2%;
-  }
 
-.img_card{
-  border:solid, 1px, red;
-  width: 90%;
-  overflow: hidden;
+.recommendation_card {
+
 }
-.img_card img{
-  width: 100%;
-  height: auto;
+
+.img_card {
+  position: relative;
+}
+.img_card > img{
+  width: auto;
+  height: 300px;
   display: block;
-  border-radius: 10px;
+  margin: 0 auto;
 }
 .stamp_wrapper{
+  transform: rotate(-19.36deg);
   position: absolute;
-  top: 10px;
-  right: 5px;
-  width: 100px;
-  height: 100px;
+  top: -34px;
+  right: -80px;
+  width: 122px;
+  height: 122px;
   border-radius: 50%;
 }
 .stamp-img{
@@ -37,12 +33,51 @@
 
 .stamp_text {
   position: absolute;
+  font-family: "Tilt Warp";
   z-index: 1;
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-shadow: 0 4.3px 4.3px rgba(0, 0, 0, 0.35);
+}
+
+.content-and-stamp {
+ overflow-x: hidden;
+ padding-top: 45px;
+}
+
+.match_score{
+  margin-top: -18px;
+  margin-left: 10px;
+  margin-bottom: -15px;
+  font-size: 52px;
+  span{
+    padding-left: 2px;
+    font-size: 20px;
+  }
+}
+.match_word{
+  text-align: center;
+}
+.img_title{
+  padding: 0 13px;
+}
+
+.song_title{
+  font-family: "Inika";
+  font-weight: bold;
+  font-size: 40px;
+  margin-top: 27px;
+  margin-bottom: 10px;
+
+}
+.song_creator{
+  font-family: "Inika";
+  font-weight: normal;
+  font-size: 16px;
+
 }
 
 .explanation {
