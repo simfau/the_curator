@@ -1,10 +1,10 @@
 #body{
-  height: 100vh;
-  border:solid, 1px, green;
-  position: relative;
+  width: 100vw;
+  // border:solid, 1px, green;
 }
 .recommendation_card{
-  width: 95%;
+// max-width: 800px ;
+  width: 100%;
   border: 1px solid #ccc;
   background: $curator-charcoal;
   margin: 2%;
