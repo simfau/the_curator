@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["box", "actionButton"]
+  static targets = ["box", "actionButton", "input"]
 
     updateButtons() {
       const isEmpty = !this.boxTargets.some(box =>
@@ -27,6 +27,7 @@ export default class extends Controller {
     document.getElementById("custom-alert").classList.remove("hidden")
     return
   }
+    this.inputTarget.value = ""
     this.actionButtonTargets.forEach(btn => {
       const url = new URL(btn.href)
       const params = url.searchParams
