@@ -21,16 +21,24 @@
 
       </div>
     </div>
-    <div class="d-flex gap-2 mb-2">
-      <%= link_to "Recommend Song",
-          recommendation_path(action_type: "song"),
-          class: "btn btn-light btn-lg text-center align-self-center disabled",
-          data: { shelf_target: "actionButton" } %>
+    <div class="d-flex justify-content-center gap-3">
+  <%= link_to recommendation_path(action_type: "song"),
+      class: "recommend-pill-btn disabled",
+      data: { shelf_target: "actionButton" } do %>
 
-      <%= link_to "Recommend Movie",
-          recommendation_path(action_type: "movie"),
-          class: "btn btn-outline-light btn-lg text-center align-self-center disabled",
-          data: { shelf_target: "actionButton" } %>
-    </div>
+      <span class="btn-label">recommend</span>
+      <span class="btn-value">SONG</span>
+
+  <% end %>
+
+  <%= link_to recommendation_path(action_type: "movie"),
+      class: "recommend-pill-btn disabled",
+      data: { shelf_target: "actionButton" } do %>
+
+      <span class="btn-label">recommend</span>
+      <span class="btn-value">MOVIE</span>
+
+  <% end %>
+</div>
   </div>
 </div>

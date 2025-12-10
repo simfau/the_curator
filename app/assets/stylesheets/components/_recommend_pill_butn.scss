@@ -1,0 +1,46 @@
+.recommend-pill-btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #000;
+  border: 1px solid #fff;
+  border-radius: 50px;
+  color: #fff;
+
+  padding: 8px 32px;
+  min-width: 160px;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+
+  .btn-label {
+    font-family: "Georgia", serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 2px;
+    opacity: 0.9;
+  }
+
+  .btn-value {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: 0.5px;
+  }
+
+  &:hover {
+    color: #000;
+    background-color: #fff;
+    border-color: #000;
+  }
+
+  &.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
