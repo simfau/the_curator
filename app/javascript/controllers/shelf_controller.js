@@ -19,7 +19,8 @@ export default class extends Controller {
     const movieTitle = clickedCube.dataset.shelfTitleParam
     const movieImage = clickedCube.dataset.shelfImageParam
     const emptyBox = this.boxTargets.find(box => !box.querySelector(".shelf-item"))
-
+    const format = clickedCube.dataset.shelfFormatParam
+    const creator = clickedCube.dataset.shelfCreatorParam
 
 
     if (!emptyBox) {
@@ -34,20 +35,37 @@ export default class extends Controller {
     })
 
     clickedCube.classList.add("picked")
-    emptyBox.innerHTML = `
+    emptyBox.innerHTML = format == "movie" ?`
+
         <div class="shelf-item position-relative d-flex justify-content-center">
           <img src="${movieImage}" alt="${movieTitle}" class="img-fluid">
 
         <button
           type="button"
-          class="btn btn-sm btn-light position-absolute top-0 end-0 rounded-circle"
+          class="btn btn-sm btn-light position-absolute shelf-remove-button rounded-circle"
           data-action="click->shelf#remove touchend->shelf#remove"
           data-source-id="${sourceId}"
         >
           ×
         </button>
       </div>
-    `
+    ` :`
+    <div class="shelf-item position-relative">
+          <img src="${movieImage}" alt="${movieTitle}" class="img-fluid">
+          <div class="song-title d-flex mt-auto">
+            <h5 class="text-center mb-0">${movieTitle}</h5>
+            <p class="mb-0">${creator}</p>
+          </div>
+        <button
+          type="button"
+          class="btn btn-sm btn-light position-absolute shelf-remove-button rounded-circle"
+          data-action="click->shelf#remove touchend->shelf#remove"
+          data-source-id="${sourceId}"
+        >
+          ×
+        </button>
+      </div>`
+
     this.updateButtons()
 
   }

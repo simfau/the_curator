@@ -18,15 +18,45 @@
   padding: 4px;
 }
 
+.shelf-images {
+
+  margin-top: 16px;
+  margin-bottom: 8px;
+
+  & > div {
+    height: 140px;
+    width: 85px;
+  }
+}
+
 #shelf {
   background-color: $curator-background;
   padding-bottom: 30px;
-  height: 220px;
 }
 
 .placeholder {
   background-color: $curator-background;
   border: 2px dashed $curator-white;
-  width: 75px;
-  height: 75px;
+  width: 74px;
+  height: 74px;
+  margin: 0 7px;
+  margin-top: 31px;
+}
+
+
+.shelf-item {
+  img{
+    max-width: 90px;
+  }
+}
+
+.shelf-remove-button {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -10px;
+    right: -10px;
+    z-index: 1;
 }
