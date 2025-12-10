@@ -22,10 +22,11 @@ export default class extends Controller {
 
 
 
-    if (!emptyBox) {
-      window.alert("Shelf is full!")
-      return
-    }
+   if (!emptyBox) {
+    console.log("Shelf is full! Triggering alert...");
+    document.getElementById("custom-alert").classList.remove("hidden")
+    return
+  }
     this.actionButtonTargets.forEach(btn => {
       const url = new URL(btn.href)
       const params = url.searchParams
