@@ -17,6 +17,7 @@ class Content < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+    #, ranked_by: "CASE WHEN format = 0 THEN :tsearch * popularity_score WHEN format = 1 THEN :tsearch * popularity_score / 50 END"
 
   def adding(type, content, provider_record = ProviderRecord.new) #i think it's faster not to make one each time
     case type
@@ -45,14 +46,20 @@ class Content < ApplicationRecord
       provider_record.adding(provider_ids, added)
 
       puts " done✅"
-
+      return added
     when :movie
-      puts "#{content['title']}"
-      director = Tmdb::Movie.crew(content['id']).find { |crew| crew['known_for_department'] == "Directing" }&.[]('name')
-      puts "  No director❌" if director.nil?
 
+      puts "#{content['title']}"
+      crew = (if content['credits']
+        content['credits']['crew']
+      else
+        Tmdb::Movie.crew(content['id'])
+      end)
+      director = crew.find { |crew| crew['known_for_department'] == "Directing" }&.[]('name')
+
+      puts "  No director❌" if director.nil?
       if content['poster_path']
-        img  = "https://image.tmdb.org/t/p/original#{content['poster_path']}"
+        img = "https://image.tmdb.org/t/p/original#{content['poster_path']}"
       else
         img = nil
         puts "  No poster❌" #should check imdb for image
@@ -80,6 +87,7 @@ class Content < ApplicationRecord
       provider_record.adding(provider_ids, added)
       # process(added)
       puts " done✅"
+      return added
     else
       raise "Unsupported type: #{type}❌"
     end
@@ -111,7 +119,6 @@ class Content < ApplicationRecord
       WHERE id NOT IN (#{content_ids_str})
         AND format = ?
       ORDER BY combined DESC
-      LIMIT 3
     SQL
 
     # Execute with ActiveRecord
@@ -122,7 +129,8 @@ class Content < ApplicationRecord
     results.map do |h|
       {
         content: Content.find(h["id"]),
-        score: 100 * Math.log(((h["combined"]/content_ids.length)) * 10000 + 1, 10001)
+        score: h["combined"],
+        # score: 100 * Math.log(((h["combined"]/content_ids.length)) * 10000 + 1, 10001)
       }
     end
   end
