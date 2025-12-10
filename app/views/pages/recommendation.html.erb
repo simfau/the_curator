@@ -1,5 +1,5 @@
 <div id="body">
-  <div class="recommendation_card mt-5">
+  <div class="recommendation_card ">
     <div class="img_container ">
       <div class="d-flex justify-content-center">
         <div class="img_card ">
@@ -10,8 +10,8 @@
             <%= image_tag "curator_stamp.png",class: "stamp-img" %>
             <div class="stamp_text">
               <div>
-                <div class="match_score"><%= @content[:score].round %>%</div>
-                <div class="match_word">Match</div>
+                <div class="match_score"><%= @content[:score].round %><span>%</span></div>
+                <div class="match_word">match</div>
               </div>
             </div>
           </div>
