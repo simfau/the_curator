@@ -36,7 +36,7 @@ Creator: #{content[:creator]}" if content[:creator]},
 Year: #{content[:date_of_release]} (#{content[:format]})" }).join(", ")}.
 
 Recommend this #{result[:content].format}: title: #{result[:content].title}#{", Creator: #{result[:content].creator}" if result[:content].creator}, Year: #{result[:content].date_of_release}.
-Explain this recommendation and dont change it. keep it under 100 words and dont think too long"
+Explain this recommendation and dont change it. keep it under 100 words, dont use markdown and dont think too long"
         }],
         model: @ai_model,
         stream: false,
