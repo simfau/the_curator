@@ -1,10 +1,12 @@
 #body{
   // border:solid, 1px, green;
   color: $light-gray;
+  max-width: 500px;
+  align-items: center;
+    margin: 0 auto;
 }
 
 .recommendation_card {
-
 }
 
 .img_card {
@@ -90,6 +92,7 @@
 
 .small_based_on_img {
   width: 25vw;
+  max-width: 125px;
   border-radius: 8px;
 }
 
