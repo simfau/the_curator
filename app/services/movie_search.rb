@@ -7,5 +7,7 @@ class MovieSearch
           Content.new.adding(:movie, movie_details, ProviderRecord.new)
       end
     end.compact
+  rescue => e
+    puts "movie search error: #{e.message}"
   end
 end

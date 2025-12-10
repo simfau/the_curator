@@ -7,5 +7,7 @@ class SongSearch
         Content.new.adding(:song, track, ProviderRecord.new)
       end
     end.compact
+  rescue => e
+    puts "spotify search error: #{e.message}"
   end
 end
