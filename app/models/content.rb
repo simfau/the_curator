@@ -63,6 +63,8 @@ class Content < ApplicationRecord
       else
         img = nil
         puts "  No poster❌" #should check imdb for image
+        puts "  not adding the movie"
+        return false
       end
 
       added = Content.create!(

@@ -1,6 +1,8 @@
 <div id="contents_search">
-  <div class="container mt-4">
-    <div class="content-border row g-4">
+  <div class="container">
+    <% if @contents.size != 0 %>
+    <p class="ms-3 mt-2">Select your title from the list...</p>
+    <div class="content-border row g-4 mt-2">
       <% @contents.each do |content| %>
         <div class="col-4">
 
@@ -24,4 +26,7 @@
       <% end %>
     </div>
   </div>
+      <% else %>
+      <p class="ms-3 mt-2"><%= "No results for current search..." %></p>
+      <% end %>
 </div>
