@@ -129,8 +129,8 @@ class Content < ApplicationRecord
     results.map do |h|
       {
         content: Content.find(h["id"]),
-        score: h["combined"],
-        # score: 100 * Math.log(((h["combined"]/content_ids.length)) * 10000 + 1, 10001)
+        # score: h["combined"],
+        score: 100 * Math.log(((h["combined"]/content_ids.length)) * 100 + 1, 101)
       }
     end
   end
