@@ -13,7 +13,7 @@
 
 .content-box img {
     width: 100%;
-    flex-grow: 1;
+    // flex-grow: 1;
     object-fit: cover;
 }
 
@@ -48,13 +48,17 @@
 
 .song-title h5 {
   color: $curator-white;
-  font-size: 9px;
+  font-size: 11px;
   justify-content: left;
 }
 
 .song-title p{
   color: $curator-white;
-  font-size: 7px;
+  font-size: 8px;
   font-style: normal;
   justify-content: center;
+}
+
+.song-img {
+
 }
