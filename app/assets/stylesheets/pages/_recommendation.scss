@@ -48,3 +48,44 @@
 .explanation {
   border: solid,1px, $curator-golden;
 }
+
+.small_based_on_img {
+  width: 25vw;
+  border-radius: 8px;
+}
+
+.based_on_each {
+  background-color: black;
+  border-radius: 16px;
+  border: 1px solid #ccc;
+  color: #ccc;
+}
+
+.btn-white-border {
+  color: #ccc;
+  background-color: black;
+  border: 1px solid #ccc ;
+  font-size: 16px;
+  border-radius: 16px;
+  width: 180px;
+  height: 40px;
+}
+
+.gradient-scroll-indicator {
+  height: 150px;
+  width: 150vw;
+  background: linear-gradient(180deg,rgba(26, 26, 26, 0) 1%, rgba(26, 26, 26, 1) 100%);
+}
+
+.btn-footer-container {
+  background-color: $curator-background;
+  width: 100vw;
+}
+
+.footer {
+ width: 100vw;
+}
+
+.based_on {
+  margin-bottom: 150px;
+}
