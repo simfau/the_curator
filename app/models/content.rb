@@ -157,12 +157,12 @@ class Content < ApplicationRecord
       request.body = {
         messages: [
           { role: "user",
-            content: "Generate short (one or two words) tags for the following content: #{title} by #{creator} from #{date_of_release} using the 'tags-from-content' tool. Do not include any extra text or reasoning in the output. Distribute exactly 50 tags as you wish in the categories." }
+            content: "Generate short (one or two words) tags for the following #{format}: #{title} by #{creator} from #{date_of_release} using the 'tags-from-content' tool. Do not include any extra text or reasoning in the output. Distribute exactly 50 tags as you wish in the categories." }
         ],
         model: model,
         stream: false,
         tools: [JSON_SCHEMA],
-        temperature: 0.7,
+        temperature: 0.6,
         max_tokens: 16182,
         top_p: 0.71
       }.to_json
