@@ -57,7 +57,7 @@ enum category: {
       {
         messages: [
           { role: "user",
-            content: "Generate short (one or two words) tags for the following content: #{content.title} by #{content.creator} from #{content.date_of_release} using the 'tags-from-content' tool. Do not include any extra text or reasoning in the output. Distribute exactly 50 tags as you wish in the categories." }
+            content: "Generate short (one or two words) tags for the following #{content.format}: #{content.title} by #{content.creator} from #{content.date_of_release} using the 'tags-from-content' tool. Do not include any extra text or reasoning in the output. Distribute exactly 50 tags as you wish in the categories." }
         ],
         model: @ai_model,
         stream: false,
