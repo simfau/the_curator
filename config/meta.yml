@@ -1,0 +1,5 @@
+meta_product_name: "The Curator"
+meta_title: "The Curator - Broaden Your Cultural Horizons"
+meta_description: "Discover new songs and movies using a fine-tuned algorithm. Get unexpected recommendations quickly."
+meta_image: "cover.png" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account" # required for Twitter Cards

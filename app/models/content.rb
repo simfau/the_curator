@@ -5,6 +5,8 @@ class Content < ApplicationRecord
 
   has_many :provider_records, dependent: :destroy
 
+  has_many :tags, through: :content_tags
+
   enum format: [:song, :movie]
 
   include PgSearch::Model

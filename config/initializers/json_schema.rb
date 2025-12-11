@@ -9,11 +9,15 @@ JSON_SCHEMA = {
         "tags": {
           "type": "object",
           "properties": {
-            "mood": {
+            "emotion": {
               "type": "array",
               "items": { "type": "string", "maxLength": 40 },
             },
             "theme": {
+              "type": "array",
+              "items": { "type": "string", "maxLength": 40 },
+            },
+            "narrative_structure": {
               "type": "array",
               "items": { "type": "string", "maxLength": 40 },
             },
@@ -25,26 +29,10 @@ JSON_SCHEMA = {
               "type": "array",
               "items": { "type": "string", "maxLength": 40 },
             },
-            "narrative_structure": {
-              "type": "array",
-              "items": { "type": "string", "maxLength": 40 },
-            },
             "aesthetic_style": {
               "type": "array",
               "items": { "type": "string", "maxLength": 40 },
             },
-            "philosophy": {
-              "type": "array",
-              "items": { "type": "string", "maxLength": 40 },
-            },
-            "cultural_context": {
-              "type": "array",
-              "items": { "type": "string", "maxLength": 40 },
-            },
-            "technique": {
-              "type": "array",
-              "items": { "type": "string", "maxLength": 40 },
-            }
           }
         }
       },

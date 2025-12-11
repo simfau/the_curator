@@ -18,13 +18,13 @@
             </div>
           </div>
         </div>
-        <div class="img_title">
-          <div class="song_title">
-            <%= @content[:content].title %>
-          </div>
-          <div class="song_creator">
-            <p><%= @content[:content].creator.presence || "No creator" %></p>
-          </div>
+      </div>
+      <div class="img_title">
+        <div class="song_title">
+          <%= @content[:content].title %>
+        </div>
+        <div class="song_creator">
+          <p><%= @content[:content].creator.presence || "" %></p>
         </div>
       </div>
       <div class="explanation">
