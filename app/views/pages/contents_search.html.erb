@@ -1,6 +1,11 @@
+<turbo-frame id="search-results">
 
 <div class="search-container">
-  <div class="wrapper-for-stimulus" data-controller="shelf">
+
+  <div class="wrapper-for-stimulus" data-controller="shelf transition-page">
+
+    <%= render "shared/transition_page" %>
+
     <%= render "shared/search_form" %>
 
     <div class="container">
@@ -14,3 +19,5 @@
   </div>
 </div>
   <%= render "shared/max4_alert" %>
+
+</turbo-frame>
