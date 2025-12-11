@@ -1,18 +1,51 @@
-.transition-page {
+#transition-page {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  background: black;
+  background-color: rgba(0, 0, 0, 0.90);
   z-index: 9999;
 
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 30px;
 }
 
-.hidden {
-  display: none;
+
+#transition-page.hidden {
+  display: none !important;
+}
+
+
+#transition-page img {
+  max-width: 60%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+
+
+}
+
+
+.loading-text {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: 1px;
+  padding: 0 20px;
+
+
+  animation: fadeIn 1s ease-in;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
