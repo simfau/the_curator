@@ -15,10 +15,11 @@ class PagesController < ApplicationController
   end
   def recommendation
     params[:action_type] == 'movie' ? format = 1 : format = 0
-    @contents = params[:content_ids].flatten.map {|content_id| Content.find(content_id)}
-    @contents.each do |content|
-      ContentTag.new.tagging(content)
-    end
+    @contents = Content.where(id: params[:content_ids].flatten)
+    # @contents.each do |content|
+    #   ContentTag.new.tagging(content)
+    # end
+    Content.regen_tags(@contents.unprocessed)
     @content = Content.contents_score(params[:content_ids].flatten, format).first
     @explanation = JSON.parse(explanation(@contents, @content).body)['choices'][0]['message']['content']
     # @content = @contents.select{ |content| content[:content][:format] == params[:action_type] }.first

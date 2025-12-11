@@ -81,3 +81,4 @@ gem 'rspotify'
 gem 'faker'
 gem "ruby_llm", "~> 1.2.0"
 gem "pg_search"
+gem "async"
