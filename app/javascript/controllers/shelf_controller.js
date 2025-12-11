@@ -3,11 +3,14 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["box", "actionButton", "input"]
 
-    updateButtons() {
-      const isEmpty = !this.boxTargets.some(box =>
+  blurInput() {
+    this.inputTarget.blur()
+  }
+
+  updateButtons() {
+    const isEmpty = !this.boxTargets.some(box =>
       box.querySelector(".shelf-item")
     )
-
     this.actionButtonTargets.forEach(btn => {
       btn.classList.toggle("disabled", isEmpty)
       btn.disabled = isEmpty
