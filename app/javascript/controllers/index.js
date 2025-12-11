@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import ShelfController from "./shelf_controller"
 application.register("shelf", ShelfController)
+
+import TransitionPageController from "./transition_page_controller"
+application.register("transition-page", TransitionPageController)

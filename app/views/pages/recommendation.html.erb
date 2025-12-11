@@ -1,54 +1,55 @@
-<div id="body">
-  <div class="recommendation_card ">
-    <div class="img_container ">
-      <div class="d-flex justify-content-center content-and-stamp">
-        <div class="img_card ">
-          <img src="<%= @content[:content].image_url %>"
-              alt="<%= @content[:content].title %>"
-              class="img_tag">
-          <div class="stamp_wrapper">
-            <%= image_tag "curator_stamp.png",class: "stamp-img" %>
-            <div class="stamp_text">
-              <div>
-                <div class="match_score"><%= @content[:score].round %><span>%</span></div>
-                <div class="match_word">match</div>
+<turbo-frame id="search-results">
+  <div id="body">
+    <div class="recommendation_card ">
+      <div class="img_container ">
+        <div class="d-flex justify-content-center content-and-stamp">
+          <div class="img_card ">
+            <img src="<%= @content[:content].image_url %>"
+                alt="<%= @content[:content].title %>"
+                class="img_tag">
+            <div class="stamp_wrapper">
+              <%= image_tag "curator_stamp.png", class: "stamp-img" %>
+              <div class="stamp_text">
+                <div>
+                  <div class="match_score"><%= @content[:score].round %><span>%</span></div>
+                  <div class="match_word">match</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="img_title">
-        <div class="song_title">
-          <%= @content[:content].title %>
+        <div class="img_title">
+          <div class="song_title">
+            <%= @content[:content].title %>
+          </div>
+          <div class="song_creator">
+            <p><%= @content[:content].creator.presence || "No creator" %></p>
+          </div>
         </div>
-        <div class="song_creator">
-          <p><%= @content[:content].creator.presence || "No creator" %></p>
+      </div>
+      <div class="explanation">
+        <p><%= @explanation %></p>
+      </div>
+    </div>
+
+    <div class="based_on container">
+      <h4 class="mb-3 mt-3" style="font: $headers-font; font-weight: normal; color: #ccc">Based on:</h4>
+      <% @contents.each do |content| %>
+        <div class="based_on_each d-flex p-2 mt-3 mb-3">
+          <img class="small_based_on_img" src="<%=content.image_url%>" alt="<%=@content[:content].title%>">
+          <div class="based_on_left ps-2">
+            <h6 style="color: white;"><strong><%= content.title.truncate(25) %></strong></h6>
+            <h6><%= content.creator if content.creator.presence %></h6>
+          </div>
         </div>
+      <% end %>
+    </div>
+
+    <div class="footer fixed-bottom">
+      <div class="gradient-scroll-indicator"></div>
+      <div class="d-flex justify-content-evenly btn-footer-container w-100">
+        <%= link_to "NEW SEARCH", root_path, class: "btn text-center align-self-center btn-white-border archivo-black-regular m-3", data: { turbo_frame: "_top" } %>
       </div>
     </div>
-    <div class="explanation">
-      <p><%= @explanation %></p>
-    </div>
-
-
   </div>
-  <div class="based_on container">
-  <h4 class="mb-3 mt-3" style="font: $headers-font; font-weight: normal; color: #ccc">Based on:</h4>
-    <% @contents.each do |content| %>
-    <div class="based_on_each d-flex p-2 mt-3 mb-3">
-      <img class="small_based_on_img" src="<%=content.image_url%>" alt="<%=@content[:content].title%>">
-      <div class="based_on_left ps-2">
-        <h6 style="color: white;"><strong><%= content.title.truncate(25) %></strong></h6>
-        <h6><%= content.creator if content.creator.presence %></h6>
-      </div>
-    </div>
-    <% end %>
-  </div>
-  <div class="footer fixed-bottom">
-  <div class="gradient-scroll-indicator"></div>
-  <div class="d-flex justify-content-evenly btn-footer-container w-100">
-    <%= link_to "NEW SEARCH", root_path, class: "btn text-center align-self-center btn-white-border archivo-black-regular m-3" %>
-  </div>
-  </div>
-
-</div>
+</turbo-frame>
