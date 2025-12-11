@@ -4,7 +4,7 @@
     <p class="ms-3 mt-2">Select your title from the list...</p>
     <div class="content-border row g-4 mt-2">
       <% @contents.each do |content| %>
-        <div class="col-4">
+        <div class="col-4 position-relative">
 
           <div id="<%= content.id %>"
               class="content-box card"
@@ -19,17 +19,22 @@
                 <div class="song-title d-flex mt-auto">
                   <div>
                     <h5 class="text-center mb-1"><%= content.title.truncate(20) %></h5>
-                    <p class="text-center mb-3"><%= content.creator %></p>
+                    <p class="text-center mb-3"><%= content.creator.truncate(20) %></p>
                   </div>
                 </div>
-                <%= image_tag "musical-note-50.png", alt: "music note", class: "music-icon-overlay" %>
-
               <% end %>
+
               <% if content.format == "movie" %>
-                <img src="<%= content.image_url %>" alt="<%= content.title %> image">
+                <img class="movie-img" src="<%= content.image_url %>" alt="<%= content.title %> image">
               <% end %>
 
           </div>
+          <% if content.format == "song" %>
+            <%= image_tag "music-note-bg.png", alt: "music note", class: "music-icon-overlay" %>
+          <% end %>
+          <% if content.format == "movie" %>
+            <%= image_tag "movie-bg.png", alt: "movie", class: "movie-icon-overlay" %>
+          <% end %>
         </div>
       <% end %>
     </div>
