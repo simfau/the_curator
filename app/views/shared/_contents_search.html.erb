@@ -17,9 +17,12 @@
               <% if content.format == "song" %>
                 <img class="song-img" src="<%= content.image_url %>" alt="<%= content.title %> image">
                 <div class="song-title d-flex mt-auto">
-                  <h5 class="text-center mb-1"><%= content.title.truncate(20) %></h5>
-                  <p class="text-center mb-3"><%= content.creator %></p>
+                  <div>
+                    <h5 class="text-center mb-1"><%= content.title.truncate(20) %></h5>
+                    <p class="text-center mb-3"><%= content.creator %></p>
+                  </div>
                 </div>
+                <%= image_tag "musical-note-50.png", alt: "music note", class: "music-icon-overlay" %>
 
               <% end %>
               <% if content.format == "movie" %>

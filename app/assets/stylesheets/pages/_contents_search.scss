@@ -8,14 +8,14 @@
   overflow: hidden;
   height: 100%;
   background-color: $curator-card-background;
-
+  position: relative;
 }
 
-.content-box img {
-    width: 100%;
-    // flex-grow: 1;
-    object-fit: cover;
-}
+// .content-box img {
+//     width: 100%;
+//     // flex-grow: 1;
+//     object-fit: cover;
+// }
 
 .song-img {
   aspect-ratio: 1 / 1;
@@ -44,6 +44,8 @@
 .song-title {
   display: flex;
   flex-direction:column;
+  position: relative;
+  overflow: visible;
 }
 
 .song-title h5 {
@@ -59,6 +61,11 @@
   justify-content: center;
 }
 
-.song-img {
-
+.music-icon-overlay {
+  position: absolute;
+  top: 10px;  /* Position from the top of the entire card */
+  right: 10px; /* Position from the right of the entire card */
+  width: 10px;
+  height: auto;
+  z-index: 2;
 }
