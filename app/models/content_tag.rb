@@ -104,7 +104,7 @@ enum category: {
         end
         # print "  #{tag}"
         count += 1
-        new_tag = ContentTag.create!(tag_id: find_tag(tag), content_id: content.id, category: category[0].to_sym)
+        new_tag = ContentTag.create!(tag_id: find_tag(tag), content_id: content.id, category: category.to_sym)
         # binding.irb
         new_tag.save
         end
