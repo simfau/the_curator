@@ -13,15 +13,16 @@ class Content < ApplicationRecord
   scope :processed, -> { where.not(is_processed: nil) }
 
   include PgSearch::Model
-  pg_search_scope :search_by_title_creator_description,
+  pg_search_scope :search_by_title,
     against: {
     title: 'A',   # high priority
-    creator: 'B',  # mid priority
-    description: 'C' #low priority
   },
     using: {
-      tsearch: { prefix: true }
+      tsearch: {
+        prefix: true,
+        normalization: 2
     }
+  }
     #, ranked_by: "CASE WHEN format = 0 THEN :tsearch * popularity_score WHEN format = 1 THEN :tsearch * popularity_score / 50 END"
 
   def adding(type, content, provider_record = ProviderRecord.new) #i think it's faster not to make one each time

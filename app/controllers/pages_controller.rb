@@ -8,7 +8,8 @@ class PagesController < ApplicationController
     if params[:query].present?
       MovieSearch.run(params[:query])
       SongSearch.run(params[:query])
-      @contents = Content.search_by_title_creator_description(params[:query]).reorder(popularity_score: :desc).limit(75)
+      @contents = Content.search_by_title(params[:query])
+      # .reorder(popularity_score: :desc).limit(75)
     else
       @contents = Content.all.shuffle.first(9)
     end
@@ -21,7 +22,12 @@ class PagesController < ApplicationController
     # end
     Content.regen_tags(@contents.unprocessed)
     @content = Content.contents_score(params[:content_ids].flatten, format).first
-    @explanation = JSON.parse(explanation(@contents, @content).body)['choices'][0]['message']['content']
+
+    @explanation = begin
+      JSON.parse(explanation(@contents, @content).body)['choices'][0]['message']['content']
+    rescue
+      ""
+    end
     # @content = @contents.select{ |content| content[:content][:format] == params[:action_type] }.first
   end
 
