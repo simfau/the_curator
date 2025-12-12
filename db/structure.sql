@@ -1,11 +1,12 @@
-\restrict iwCSlCBgTraT0uBaVS4GZB7nlW8wUVqt3efWrAdOJ2lL6xaIY7fBiTPOQd6MWdX
+\restrict Xf0lfhGaFdj2h31DrawUsMtJBOZuNHuRftTQ5tmJal9TNyf2Oa8r7c6EVMUapsl
 
--- Dumped from database version 16.10 (Ubuntu 16.10-0ubuntu0.24.04.1)
--- Dumped by pg_dump version 16.10 (Ubuntu 16.10-0ubuntu0.24.04.1)
+-- Dumped from database version 15.14 (Homebrew)
+-- Dumped by pg_dump version 18.0
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -354,7 +355,7 @@ ALTER TABLE ONLY public.provider_records
 -- PostgreSQL database dump complete
 --
 
-\unrestrict iwCSlCBgTraT0uBaVS4GZB7nlW8wUVqt3efWrAdOJ2lL6xaIY7fBiTPOQd6MWdX
+\unrestrict Xf0lfhGaFdj2h31DrawUsMtJBOZuNHuRftTQ5tmJal9TNyf2Oa8r7c6EVMUapsl
 
 SET search_path TO "$user", public;
 
