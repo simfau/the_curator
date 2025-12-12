@@ -1,26 +1,26 @@
-<div class="container home-container text-center mt-5">
-  <div class="d-flex justify-content-center align-items-center pb-4 super-tight-header">
+<div class="container home-container text-center mt-3">
+
+  <%= render 'shared/dr_evil_gif' %>
+
+  <div class="d-flex justify-content-center align-items-center pt-2 pb-2 super-tight-header">
     <h1>THE CURA</h1>
     <%= image_tag "Curator_T2.png", alt:"curator-filter-icon", class:"filter-icon" %>
     <h1>OR</h1>
   </div>
 
-  <div class="d-flex py-3">
-    <p class="intro">I'm your personal AI assistant. I'll help you discover new songs or movies based on your personal taste. Let me get to know you...</p>
+  <div class="d-flex py-2 justify-content-center">
+    <p class="intro" style="max-width: 600px;">
+      I'm your personal AI assistant. I'll help you discover new songs or movies based on your personal taste. Let me get to know you...
+    </p>
   </div>
-  <div class="d-flex justify-content-center">
+
+  <div class="d-flex justify-content-center mt-2">
     <div class="row justify-content-center search-box">
         <%= form_with url: contents_search_path, method: :get, class: "d-flex" do %>
           <%= label_tag :query, "Search contents", class: "visually-hidden" %>
-          <%= text_field_tag :query,
-                params[:query],
-                class: "form-control search-input",
-                placeholder: "Type in a movie or a song you like"
-            %>
-          <%= hidden_field_tag :action_type,
-                params[:action_type] %>
+          <%= text_field_tag :query, params[:query], class: "form-control search-input", placeholder: "Type in a movie or a song you like" %>
+          <%= hidden_field_tag :action_type, params[:action_type] %>
         <% end %>
-
     </div>
   </div>
 </div>
