@@ -1,45 +1,55 @@
 <div id="contents_search">
   <div class="container">
     <% if @contents.size != 0 %>
-    <p class="ms-3 mt-2">Select your title from the list...</p>
-    <div class="content-border row g-4 mt-2">
-      <% @contents.each do |content| %>
-        <div class="col-4 position-relative">
+      <p class="ms-3 mt-2">Select your title from the list...</p>
 
-          <div id="<%= content.id %>"
-              class="content-box card"
-              data-action="click->shelf#select"
-              data-shelf-title-param="<%= content.title.truncate(20) %>"
-              data-shelf-image-param="<%= content.image_url %>"
-              data-shelf-format-param="<%= content.format %>"
-              data-shelf-creator-param="<%= content.creator %>">
+      <div class="content-border row g-4 mt-2">
+        <% @contents.each do |content| %>
+          <div class="col-4 position-relative">
 
-              <% if content.format == "song" %>
-                <img class="song-img" src="<%= content.image_url %>" alt="<%= content.title %> image">
-                <div class="song-title d-flex mt-auto">
-                  <div>
-                    <h5 class="text-center mb-1"><%= content.title.truncate(20) %></h5>
-                    <p class="text-center mb-3"><%= content.creator.truncate(20) %></p>
+            <div id="<%= content.id %>"
+                class="content-box card"
+                data-action="click->shelf#select"
+                data-shelf-title-param="<%= content.title.truncate(20) %>"
+                data-shelf-image-param="<%= content.image_url %>"
+                data-shelf-format-param="<%= content.format %>"
+                data-shelf-creator-param="<%= content.creator %>">
+
+                <% if content.format == "song" %>
+                  <img class="song-img" src="<%= content.image_url %>" alt="<%= content.title %> image">
+                  <div class="song-title d-flex mt-auto">
+                    <div>
+                      <h5 class="text-center mb-1"><%= content.title.truncate(20) %></h5>
+                      <p class="text-center mb-3"><%= content.creator.truncate(20) %></p>
+                    </div>
                   </div>
-                </div>
-              <% end %>
+                <% end %>
 
-              <% if content.format == "movie" %>
-                <img class="movie-img" src="<%= content.image_url %>" alt="<%= content.title %> image">
-              <% end %>
+                <% if content.format == "movie" %>
+                  <img class="movie-img" src="<%= content.image_url %>" alt="<%= content.title %> image">
+                <% end %>
 
+            </div>
+
+            <% if content.format == "song" %>
+              <%= image_tag "music-note-bg.png", alt: "music note", class: "music-icon-overlay" %>
+            <% end %>
+            <% if content.format == "movie" %>
+              <%= image_tag "movie-bg.png", alt: "movie", class: "movie-icon-overlay" %>
+            <% end %>
           </div>
-          <% if content.format == "song" %>
-            <%= image_tag "music-note-bg.png", alt: "music note", class: "music-icon-overlay" %>
-          <% end %>
-          <% if content.format == "movie" %>
-            <%= image_tag "movie-bg.png", alt: "movie", class: "movie-icon-overlay" %>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
+
+    <% else %>
+      <div class="d-flex flex-column align-items-center justify-content-center mt-5 text-center">
+        <%= image_tag "confused_travolta.gif",
+            style: "width: 350px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); opacity: 0.9;",
+            alt: "Confused Travolta" %>
+
+        <h3 class="mt-4 text-white">"I can't seem to find that..."</h3>
+        <p class="text-white-50">Try checking the spelling or searching for a different title.</p>
+      </div>
+    <% end %>
   </div>
-      <% else %>
-      <p class="ms-3 mt-2"><%= "No results for current search..." %></p>
-      <% end %>
 </div>
