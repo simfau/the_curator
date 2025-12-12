@@ -47,7 +47,8 @@ enum category: {
         return false
       end
     else
-      print "🔒#{content.id}"
+      print "🔒#{content.id}
+"
       return false
     end
   end
@@ -93,23 +94,21 @@ enum category: {
           end)
   end
 
-  def save_tags(parsed_reply, content)
+  def save_tags(content, parsed_reply)
     count = 0
     puts content.id
-    parsed_reply.each do |_, categories|
-      categories.each do |category|
-        category[1].each do |tag|
+    parsed_reply.each do |category, tags|
+        tags.each do |tag|
         if count % 10 == 0 && count != 0
           puts ""
         end
         # print "  #{tag}"
         count += 1
-        new_tag = ContentTag.create!(tag_id: find_tag(tag), content_id: content.id, category: category[0].to_sym)
+        new_tag = ContentTag.create!(tag_id: find_tag(tag), content_id: content.id, category: category.to_sym)
         # binding.irb
         new_tag.save
         end
       end
-    end
     if count == 0
       puts "0️⃣"
       false

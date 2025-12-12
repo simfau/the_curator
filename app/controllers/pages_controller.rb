@@ -8,19 +8,26 @@ class PagesController < ApplicationController
     if params[:query].present?
       MovieSearch.run(params[:query])
       SongSearch.run(params[:query])
-      @contents = Content.search_by_title_creator_description(params[:query]).reorder(popularity_score: :desc).limit(75)
+      @contents = Content.search_by_title(params[:query])
+      # .reorder(popularity_score: :desc).limit(75)
     else
       @contents = Content.all.shuffle.first(9)
     end
   end
   def recommendation
     params[:action_type] == 'movie' ? format = 1 : format = 0
-    @contents = params[:content_ids].flatten.map {|content_id| Content.find(content_id)}
-    @contents.each do |content|
-      ContentTag.new.tagging(content)
-    end
+    @contents = Content.where(id: params[:content_ids].flatten)
+    # @contents.each do |content|
+    #   ContentTag.new.tagging(content)
+    # end
+    Content.regen_tags(@contents.unprocessed)
     @content = Content.contents_score(params[:content_ids].flatten, format).first
-    @explanation = JSON.parse(explanation(@contents, @content).body)['choices'][0]['message']['content']
+
+    @explanation = begin
+      JSON.parse(explanation(@contents, @content).body)['choices'][0]['message']['content']
+    rescue
+      ""
+    end
     # @content = @contents.select{ |content| content[:content][:format] == params[:action_type] }.first
   end
 

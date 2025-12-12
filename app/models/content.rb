@@ -9,16 +9,20 @@ class Content < ApplicationRecord
 
   enum format: [:song, :movie]
 
+  scope :unprocessed, -> { where(is_processed: nil) }
+  scope :processed, -> { where.not(is_processed: nil) }
+
   include PgSearch::Model
-  pg_search_scope :search_by_title_creator_description,
+  pg_search_scope :search_by_title,
     against: {
     title: 'A',   # high priority
-    creator: 'B',  # mid priority
-    description: 'C' #low priority
   },
     using: {
-      tsearch: { prefix: true }
+      tsearch: {
+        prefix: true,
+        normalization: 2
     }
+  }
     #, ranked_by: "CASE WHEN format = 0 THEN :tsearch * popularity_score WHEN format = 1 THEN :tsearch * popularity_score / 50 END"
 
   def adding(type, content, provider_record = ProviderRecord.new) #i think it's faster not to make one each time
@@ -140,8 +144,67 @@ class Content < ApplicationRecord
     end
   end
 
+  def llm_response(retries = 3, model = "openai/gpt-oss-20b:groq")
+    conn = Faraday.new(
+      url: "https://router.huggingface.co",
+      headers: {
+        "Authorization" => "Bearer #{ENV["HF_TOKEN"]}",
+        "Content-Type" => "application/json"
+      }
+    ) do |faraday|
+      faraday.response :logger, nil, { headers: false, bodies: false, errors: true }
+    end
+    response = conn.post("/v1/chat/completions") do |request|
+      request.body = {
+        messages: [
+          { role: "user",
+            content: "Generate short (one or two words) tags for the following #{format}: #{title} by #{creator} from #{date_of_release} using the 'tags-from-content' tool. Do not include any extra text or reasoning in the output. Distribute exactly 50 tags as you wish in the categories." }
+        ],
+        model: model,
+        stream: false,
+        tools: [JSON_SCHEMA],
+        temperature: 0.6,
+        max_tokens: 16182,
+        top_p: 0.71
+      }.to_json
+    end
 
+    parsed_response_body = JSON.parse(response.body)
 
+    if parsed_response_body["error"]
+      if retries > 0
+        return llm_response(retries - 1, "openai/gpt-oss-20b:nebius")
+      end
+    end
+
+    content = parsed_response_body.dig("choices", 0, "message", "content")
+    arguments = parsed_response_body.dig("choices", 0, "message", "tool_calls", 0, "function", "arguments")
+
+    tool_call_args = JSON.parse(content || arguments)
+    raise "llm failed to gen tags" if tool_call_args.nil?
+
+    tool_call_args["tags"]
+  end
+
+  def self.regen_tags(contents)
+    tags_sets = Async do
+      contents.map do |c|
+        Async do
+          # begin
+            tags = c.llm_response
+
+            [c, tags]
+          # rescue => e
+          #   puts e.full_message
+          #   nil
+          # end
+        end
+      end.map(&:wait)
+    end.wait.compact
+    tags_sets.each do |content, tags|
+      ContentTag.new.save_tags(content, tags)
+    end
+  end
   private
 
   def describe(content)

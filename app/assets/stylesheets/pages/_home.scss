@@ -50,22 +50,18 @@
   background-color: black;
   border-color: $curator-darkgrey;
   border-radius: 8px;
+  font-family: "Inika";
+  font-weight: normal;
+  font-style: 16px;
+  color: $curator-white;
 }
 
 .form-control::placeholder {
   color: $curator-darkgrey;
-  font-family: "Inika";
-  font-weight: normal;
-  font-style: 12px;
-  border-color: $curator-darkgrey;
 }
 
 .form-control:focus {
   background-color: black;
   border-color: $curator-darkgrey;
-  border-radius: 8px;
-  color: $curator-darkgrey;
-  font-family: "Inika";
-  font-weight: normal;
-  font-style: 12px;
+  color: $curator-white;
 }

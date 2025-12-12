@@ -7,30 +7,3 @@
   width: 306px;
   height: 40px;
 }
-
-.form-control {
-  background-color: black;
-  border-color: $curator-darkgrey;
-  border-radius: 8px;
-  color: $curator-darkgrey;
-  font-family: "Inika";
-  font-weight: normal;
-  font-size: 12px;
-  background-color: black;
-  box-shadow: none;
-  outline: 0;
-  color: $curator-darkgrey;
-}
-
-.form-control::placeholder {
-  color: $curator-darkgrey;
-  font-family: "Inika";
-  font-weight: normal;
-
-  font-size: 12px;
-  background-color: black;
-}
-
-.form-control:focus {
-
-}
