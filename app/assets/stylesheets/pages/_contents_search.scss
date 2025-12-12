@@ -55,12 +55,17 @@
   flex-direction:column;
   position: relative;
   overflow: visible;
+  width: 100%;
+  text-align: center;
 }
 
 .song-title h5 {
   color: $curator-white;
   font-size: 11px;
   justify-content: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .song-title p{
@@ -68,6 +73,10 @@
   font-size: 8px;
   font-style: normal;
   justify-content: center;
+  white-space: nowrap;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .music-icon-overlay {
