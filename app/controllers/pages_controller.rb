@@ -14,7 +14,6 @@ class PagesController < ApplicationController
     end
   end
   def recommendation
-    sleep(1)
     params[:action_type] == 'movie' ? format = 1 : format = 0
     @contents = params[:content_ids].flatten.map {|content_id| Content.find(content_id)}
     @contents.each do |content|
